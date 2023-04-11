@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			xmlns:view="clr-namespace:Central.App.Views"
+			xmlns:temp="clr-namespace:Central.App.Templates"
+			x:Class="Central.App.Views.PageLoginV">
+	<view:PageV.Body>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="{OnIdiom Phone=Auto, Default=*}"/>
+				<ColumnDefinition Width="{OnIdiom Phone=*, Default=400}"/>
+				<ColumnDefinition Width="{OnIdiom Phone=Auto, Default=*}"/>
+			</Grid.ColumnDefinitions>
+
+           <VerticalStackLayout
+				Grid.Row="1"
+				Grid.Column="1"
+				VerticalOptions="Center"
+				Margin="10,-50,10,0">
+
+                <temp:ImageV
+                    Source="leaf.png"
+					Aspect="AspectFit"
+					HeightRequest="70"
+					WidthRequest="70"
+					VerticalOptions="Start"
+					HorizontalOptions="Start"/>
+
+                <StackLayout>
+                    <temp:LabelTitleV
+                        Text="Welcome Back !"/>
+
+                    <temp:LabelNormalV
+						Text="Login"/>
+
+                    <StackLayout 
+						HeightRequest="20"/>
+
+                    <temp:LabelNormalV
+						Text="Anda dapat login dengan menggunakan Email / No. Handphone Anda. Pastikan informasi yang Anda masukkan sudah benar."/>
+                </StackLayout>
+               
+                <StackLayout HeightRequest="20"/>
+
+				<temp:InputText4V
+					BindingContext="{Binding InputEmailPhoneVM}"/>
+
+				<temp:InputText4V
+					BindingContext="{Binding InputPasswordVM}"/>
+
+				<temp:LabelNormalV
+					HorizontalOptions="End"
+					Text="Lupa password Anda ? "
+					FontAttributes="Italic"/>
+
+				<temp:ButtonNormalV
+					Margin="0,20,0,10"
+					Text="Login"
+					Command="{Binding LoginCommand}"/>
+
+				<HorizontalStackLayout
+					Margin="0,20,0,0"
+					HorizontalOptions="Center">
+					<temp:LabelNormalV
+						Text="Belum punya Akun ? "/>
+
+                    <temp:LabelNormalV
+						Text="Register"
+						FontAttributes="Bold">
+                        <temp:LabelNormalV.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
+                        </temp:LabelNormalV.GestureRecognizers>
+                    </temp:LabelNormalV>
+				</HorizontalStackLayout>
+			</VerticalStackLayout>
+		</Grid>
+
+	</view:PageV.Body>
+</view:PageV>

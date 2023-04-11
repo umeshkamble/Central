@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PayEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:temp="clr-namespace:Central.App.Templates"
+               x:Class="Central.App.Templates.PayTransferEditV">
+    <temp:PayEditV.BodyPay>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--InputTglTransfer-->
+            <temp:InputDateV
+                Grid.Row="0"    
+                BindingContext="{Binding PnInputTglTransferVM}"/>
+
+            <!--InputBank-->
+            <temp:InputPickerV
+                Grid.Row="1"    
+                BindingContext="{Binding PnInputBankVM}"/>
+
+            <!--InputKas-->
+            <temp:InputPickerV
+                Grid.Row="2"    
+                BindingContext="{Binding PnInputKasVM}"/>
+
+            <!--InputQRIS-->
+            <temp:InputPickerV
+                Grid.Row="3"    
+                BindingContext="{Binding PnInputQRISVM}"/>
+        </Grid>
+    </temp:PayEditV.BodyPay>
+</temp:PayEditV>

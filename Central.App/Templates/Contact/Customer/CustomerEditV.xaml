@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:ContactEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:temp="clr-namespace:Central.App.Templates"
+                   x:Class="Central.App.Templates.CustomerEditV">
+    <temp:ContactEditV.BodyContact>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Title-->
+            <temp:LabelTitleV
+                Grid.Row="0"
+                Text="Info Lain"/>
+
+            <!--InputSalesman-->
+            <temp:InputPickerV
+                Grid.Row="1"    
+                BindingContext="{Binding PnInputSalesmanVM}"/>
+
+            <!--InputLamaJT-->
+            <temp:InputText3V
+                Grid.Row="2"    
+                BindingContext="{Binding PnInputLamaJTVM}"/>
+
+            <!--InputPlafond-->
+            <temp:InputText3V
+                Grid.Row="3"    
+                BindingContext="{Binding PnInputPlafondVM}"/>
+
+            <!--InputNoNPWP-->
+            <temp:InputText1V
+                Grid.Row="4"    
+                BindingContext="{Binding PnInputNoNPWPVM}"/>
+
+        </Grid>
+    </temp:ContactEditV.BodyContact>
+</temp:ContactEditV>

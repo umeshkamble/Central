@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Central.App.Views.PanelList2V"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates">
+
+    <!--  PanelList Horizontal  -->
+    <ContentView.Content>
+        <Grid
+            Margin="0"
+            ColumnSpacing="0"
+            RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  Title  -->
+            <VerticalStackLayout Grid.Row="0" IsVisible="{Binding IsViewTitle1, FallbackValue=false}">
+
+                <temp:LabelTitleV Text="{Binding Title1}" />
+
+                <StackLayout HeightRequest="5" />
+            </VerticalStackLayout>
+
+            <!--  List  -->
+            <!--<HorizontalStackLayout
+                Grid.Row="1"
+                BindableLayout.ItemsSource="{Binding Items}"
+                BindableLayout.ItemTemplate="{Binding Template}"/>-->
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

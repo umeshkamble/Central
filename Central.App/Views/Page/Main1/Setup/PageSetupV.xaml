@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:view="clr-namespace:Central.App.Views"
+            xmlns:temp="clr-namespace:Central.App.Templates"
+            xmlns:theme="clr-namespace:Central.App.Themes"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            ios:Page.UseSafeArea="True"
+            x:Class="Central.App.Views.PageSetupV">
+    <view:PageV.Body>
+        <StackLayout Margin="10">
+            <temp:PickerEnumV 
+                ios:Picker.UpdateMode="WhenFinished"
+                EnumType="{x:Type theme:Theme}"
+                Title="Select Theme"
+                SelectedIndexChanged="OnPickerChanged"/>
+
+
+            <temp:LabelTitleV
+                Text="Title (grup)"/>
+            <temp:LabelNormalV
+                Text="Normal (grup)"/>
+            <temp:LabelHintV
+                Text="Hint (grup)"/>
+            <temp:LabelIconV
+                Text="Save (grup)"/>
+
+            <StackLayout
+                HeightRequest="50"/>
+
+            <Grid ColumnSpacing="10"> 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Menu1-->
+                <temp:Menu1V
+                    Grid.Column="0"
+                    BindingContext="{Binding Menu1VM}"/>
+
+                <!--Menu2-->
+                <temp:Menu2V
+                    Grid.Column="1"
+                    BindingContext="{Binding Menu2VM}"/>
+
+                <!--Menu3-->
+                <temp:Menu3V
+                    Grid.Column="2"
+                    BindingContext="{Binding Menu3VM}"/>
+            </Grid>
+
+            <StackLayout
+                HeightRequest="50"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Hi"
+                    VerticalOptions="Center"/>
+                <Entry
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Placeholder="Input here..."
+                    BackgroundColor="Yellow"/>
+
+
+            </Grid>
+
+        </StackLayout>
+    </view:PageV.Body>
+    
+</view:PageV>

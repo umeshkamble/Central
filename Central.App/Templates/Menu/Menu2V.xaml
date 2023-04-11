@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:MenuT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:temp="clr-namespace:Central.App.Templates"
+            x:Class="Central.App.Templates.Menu2V">
+    <temp:MenuT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Title-->
+            <temp:LabelHintV
+                Grid.Row="0"
+                Grid.Column="0"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnTitle1}"
+                IsVisible="{Binding PnViewTitle1}"/>
+
+            <!--Space-->
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="1"
+                WidthRequest="5"
+                IsVisible="{Binding PnViewSpace}"/>
+
+
+            <!--Icon-->
+            <temp:LabelIconV
+                Grid.Row="0"
+                Grid.Column="2"
+                TextColor="White"
+                Text="{Binding PnIcon}"
+                IsVisible="{Binding PnViewIcon}"/>
+        </Grid>
+    </temp:MenuT.Body>
+</temp:MenuT>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Central.App.Themes.ThemeLight">
+
+    <Color x:Key="ClrBackground">White</Color>
+    <Color x:Key="ClrPrimary">#58910f</Color>
+    <Color x:Key="ClrSecondary">#cbe19d</Color>
+    <Color x:Key="ClrTertiary">#5a5229</Color>
+
+    <Color x:Key="ClrTextNormal">Black</Color>
+    <Color x:Key="ClrTextHint">#6f6f6f</Color>
+    <Color x:Key="ClrGray">#c0c0c0</Color>
+    <Color x:Key="ClrSilver">#f6f6f2</Color>
+
+    <x:String x:Key="IconHome">iconhome1.png</x:String>
+    <x:String x:Key="IconOfficial">iconofficial1.png</x:String>
+    <x:String x:Key="IconScan">iconscan1.png</x:String>
+    <x:String x:Key="IconWishlist">iconwishlist1.png</x:String>
+    <x:String x:Key="IconTrolly">icontrolly1.png</x:String>
+    <x:String x:Key="IconSetup">iconsetup1.png</x:String>
+
+</ResourceDictionary>

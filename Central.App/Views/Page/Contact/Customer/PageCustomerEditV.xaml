@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:PageContactEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:view="clr-namespace:Central.App.Views"
+                       xmlns:temp="clr-namespace:Central.App.Templates"
+                       x:Class="Central.App.Views.PageCustomerEditV">
+
+    <view:PageContactEditV.Edit>
+        <temp:CustomerEditV/>
+    </view:PageContactEditV.Edit>
+
+</view:PageContactEditV>

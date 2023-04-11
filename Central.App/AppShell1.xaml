@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Central.App.AppShell1"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:Central.App.Views"
+    Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Flyout">
+
+    <ShellContent
+        Title="Startup"
+        ContentTemplate="{DataTemplate view:PageStartupV}"
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Route="PageStartupV_" />
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate view:PageLoginV}"
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
+        Route="PageLoginV_" />
+
+    <TabBar
+        FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled">
+        <Tab Title="Home"
+             Icon="{DynamicResource IconHome}">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate view:PageHomeV}"
+                Route="PageHomeV_"/>
+        </Tab>
+
+        <Tab Title="Store"
+             Icon="{DynamicResource IconOfficial}">
+            <ShellContent
+                Title="Store"
+                ContentTemplate="{DataTemplate view:PageStoreV}"
+                Route="PageStoreV_"/>
+        </Tab>
+
+        <Tab Title="Scan"
+             Icon="{DynamicResource IconScan}">
+            <ShellContent
+                Title="Scan"
+                ContentTemplate="{DataTemplate view:PageScanV}"
+                Route="PageScanV_"/>
+        </Tab>
+
+        <Tab Title="Trolly"
+             Icon="{DynamicResource IconTrolly}">
+            <ShellContent
+                Title="Trolly"
+                ContentTemplate="{DataTemplate view:PageTrollyV}"
+                Route="PageTrollyV_"/>
+        </Tab>
+
+        <Tab Title="Setup"
+             Icon="{DynamicResource IconSetup}">
+            <ShellContent
+                Title="Setup"
+                ContentTemplate="{DataTemplate view:PageSetupV}"
+                Route="PageSetupV_"/>
+        </Tab>
+    </TabBar>
+</Shell>

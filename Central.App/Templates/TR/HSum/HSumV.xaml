@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:HSumT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.HSumV">
+
+    <temp:HSumT.Body>
+        <Grid 
+            RowSpacing="2" 
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Switch PPN-->
+            <temp:InputSwitchV
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                PnMargin="0"
+                PnPadding="0"
+                BindingContext="{Binding PnInputSwitchPpnVM}"/>
+
+            <!--Line-->
+            <temp:BoxViewV
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,-5,0,5"/>
+
+            <!--SubTotal-->
+            <temp:LabelHintV 
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="SubTotal"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--SubTotal-->
+            <temp:LabelHintV 
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnSubTotal, FallbackValue='160,000', StringFormat='{0:#,##0}'}"/>
+            
+            <!--DiskonItem-->
+            <temp:LabelHintV 
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Diskon Item"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--DiskonItem-->
+            <temp:LabelHintV 
+                Grid.Row="3"
+                Grid.Column="1"
+                TextColor="Red"
+                HorizontalTextAlignment="End"
+                Text="{Binding PnDiskonItem, FallbackValue='(13,000)', StringFormat='({0:#,##0})'}"/>
+
+            <!--DiskonFaktur-->
+            <HorizontalStackLayout    
+                Grid.Row="4"
+                Spacing="5">
+
+                <!--Label-->
+                <temp:LabelHintV 
+                    VerticalOptions="Center"
+                    Text="Diskon Faktur"
+                    TextColor="{Binding PnTextColor1}"/>
+
+                <!--IconEditDiskon-->
+                <temp:LabelIconV
+                    FontSize="Small"
+                    VerticalOptions="Center"
+                    Text="{Binding PnIcon2}">
+
+                    <temp:LabelIconV.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PnEditDiskonCommand}"/>
+                    </temp:LabelIconV.GestureRecognizers>
+                </temp:LabelIconV>
+
+                <!--DiskonPersen-->
+                <temp:LabelHintV 
+                    VerticalOptions="Center"
+                    TextColor="Red"
+                    Text="{Binding PnDiskonFakturPersen, FallbackValue='(20%)', StringFormat='({0:#,##0.###}%)'}"/>
+            </HorizontalStackLayout>
+
+            <!--DiskonFaktur-->
+            <temp:LabelHintV 
+                Grid.Row="4"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                TextColor="Red"
+                Text="{Binding PnDiskonFaktur, FallbackValue='(0)', StringFormat='({0:#,##0})'}"/>
+
+            <!--PPN-->
+            <temp:LabelHintV 
+                Grid.Row="5"
+                Grid.Column="0"
+                VerticalOptions="Center"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnPPNPersen, FallbackValue='PPN (11%)', StringFormat='PPN ({0:#,##0.###}%)'}"/>
+
+            <!--PPN-->
+            <temp:LabelHintV 
+                Grid.Row="5"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnPPN, FallbackValue='0', StringFormat='{0:#,##0}'}"/>
+
+            <!--Biaya-->
+            <temp:LabelHintV 
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Biaya"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Biaya-->
+            <temp:LabelHintV 
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnBiaya, FallbackValue='0', StringFormat='{0:#,##0}'}"/>
+
+        </Grid>
+    </temp:HSumT.Body>
+    
+    
+</temp:HSumT>

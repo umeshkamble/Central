@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PIT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:temp="clr-namespace:Central.App.Templates"
+          x:Class="Central.App.Templates.PI2V">
+
+    <temp:PIT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--No-->
+            <temp:LabelHintV
+                Grid.Row="0"
+                Grid.Column="0"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnNo}"/>
+            
+            <!--Title-->
+            <VerticalStackLayout
+                Grid.Row="1"
+                Grid.Column="2">
+                
+                <temp:LabelHintV
+                    FontSize="Medium"
+                    TextColor="{Binding PnTextColor1}"
+                    Text="{Binding PnNoFaktur}"/>
+
+                <temp:LabelHintV
+                    FontSize="Micro"
+                    TextColor="{Binding PnTextColor1}"
+                    Text="{Binding PnTotalTransaksi, StringFormat='Total : Rp. {0:#,##0},-'}"/>
+            </VerticalStackLayout>
+        </Grid>
+    </temp:PIT.Body>
+    
+    
+</temp:PIT>

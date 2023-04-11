@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:InputTextT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:temp="clr-namespace:Central.App.Templates"
+                 xmlns:behaviors="clr-namespace:Central.App.Behaviors"
+                 x:Class="Central.App.Templates.InputTextSearchV">
+
+    <temp:InputTextT.Body>
+        <Grid 
+            RowSpacing="0" 
+            ColumnSpacing="0" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Text-->
+            <temp:SearchBarV
+                x:Name="entry1"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalTextAlignment="Start"
+                SearchCommand="{Binding PnSearchCommand}"
+                Text="{Binding PnText, Mode=TwoWay}"
+                Placeholder="{Binding PnTextHelper, FallbackValue='Masukkan nama barang'}"
+                MaxLength="{Binding PnMaxLength}"
+                Keyboard="{Binding PnKeyboard}"
+                FontAttributes="{Binding PnFontAttributes}"
+                IsReadOnly="{Binding PnReadOnly}">
+
+                <temp:SearchBarV.Behaviors>
+                    <behaviors:BehaviorEvent 
+                        EventName="Focused" 
+                        Command="{Binding PnSearchEnterCommand}"/>
+
+                    <behaviors:BehaviorEvent 
+                        EventName="TextChanged" 
+                        Command="{Binding PnSearchDelayCommand}"/>
+                </temp:SearchBarV.Behaviors>
+            </temp:SearchBarV>
+        </Grid>
+    </temp:InputTextT.Body>
+</temp:InputTextT>

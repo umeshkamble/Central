@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:RateT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.RateEditV">
+
+    <temp:RateT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--HrgNormal-->
+            <temp:InputText3V
+                Grid.Row="0"
+                BindingContext="{Binding PnInputHrgNormalVM}"/>
+
+            <!--DiskonRp-->
+            <temp:InputText3V
+                Grid.Row="1"
+                BindingContext="{Binding PnInputDiskonRpVM}"/>
+
+            <!--Diskon1-->
+            <temp:InputText3V
+                Grid.Row="2"
+                BindingContext="{Binding PnInputDiskon1VM}"/>
+
+            <!--Diskon2-->
+            <temp:InputText3V
+                Grid.Row="3"
+                BindingContext="{Binding PnInputDiskon2VM}"/>
+
+            <!--Diskon3-->
+            <temp:InputText3V
+                Grid.Row="4"
+                BindingContext="{Binding PnInputDiskon3VM}"/>
+
+            <StackLayout
+                Grid.Row="5"
+                Margin="0,5,0,5"
+                HeightRequest="1"
+                BackgroundColor="{DynamicResource ClrPrimary}"/>
+
+            <!--HrgPublish-->
+            <temp:InputText3V
+                Grid.Row="6"
+                BindingContext="{Binding PnInputHrgPublishVM}"/>
+        </Grid>
+    </temp:RateT.Body>
+    
+    
+</temp:RateT>

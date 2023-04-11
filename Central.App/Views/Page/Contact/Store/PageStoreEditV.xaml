@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:PageContactEditV
+    x:Class="Central.App.Views.PageStoreEditV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+
+    <view:PageContactEditV.Edit>
+        <!--<temp:StoreEditV />-->
+    </view:PageContactEditV.Edit>
+
+    <view:PageContactEditV.EditFooter>
+        <temp:ButtonNormalV Command="{Binding OpenStoreCommand}" Text="Open Store" />
+    </view:PageContactEditV.EditFooter>
+
+
+</view:PageContactEditV>

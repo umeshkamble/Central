@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PSumT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.PSumV">
+
+    <temp:PSumT.Body>
+        <Grid 
+            RowSpacing="2" 
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Switch Split-->
+            <temp:InputSwitchV
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                PnMargin="0"
+                PnPadding="0"
+                BindingContext="{Binding PnInputSwitchSplitVM}"/>
+
+            <!--Switch Point-->
+            <temp:InputSwitchV
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                PnMargin="0"
+                PnPadding="0"
+                BindingContext="{Binding PnInputSwitchPointVM}"/>
+
+            <!--InputPromo-->
+            <temp:InputPickerV
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BindingContext="{Binding PnInputPromoVM}"/>
+
+            <!--Tagihan-->
+            <temp:LabelHintV 
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Total Tagihan"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Tagihan-->
+            <temp:LabelHintV 
+                Grid.Row="3"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                FontAttributes="Bold"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnTagihan, FallbackValue='160,000', StringFormat='{0:#,##0}'}"/>
+            
+            <!--Point-->
+            <temp:LabelHintV 
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Total Point"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Point-->
+            <temp:LabelHintV 
+                Grid.Row="4"
+                Grid.Column="1"
+                TextColor="Red"
+                HorizontalTextAlignment="End"
+                Text="{Binding PnPoint, FallbackValue='(13,000)', StringFormat='({0:#,##0})'}"/>
+
+            <!--Promo-->
+            <temp:LabelHintV 
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="Total Promo"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Promo-->
+            <temp:LabelHintV 
+                Grid.Row="5"
+                Grid.Column="1"
+                TextColor="Red"
+                HorizontalTextAlignment="End"
+                Text="{Binding PnPromo, FallbackValue='(13,000)', StringFormat='({0:#,##0})'}"/>
+
+            <!--Bayar-->
+            <temp:LabelHintV 
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Total Bayar"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Bayar-->
+            <temp:LabelHintV 
+                Grid.Row="6"
+                Grid.Column="1"
+                HorizontalTextAlignment="End"
+                Text="{Binding PnBayar, FallbackValue='(13,000)', StringFormat='({0:#,##0})'}"/>
+
+            <!--Sisa-->
+            <temp:LabelHintV 
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="Sisa Tagihan"
+                TextColor="{Binding PnTextColor1}"/>
+
+            <!--Sisa-->
+            <temp:LabelHintV 
+                Grid.Row="7"
+                Grid.Column="1"
+                HorizontalTextAlignment="End"
+                Text="{Binding PnSisa, FallbackValue='13,000', StringFormat='{0:#,##0}'}"/>
+        </Grid>
+    </temp:PSumT.Body>
+    
+    
+</temp:PSumT>

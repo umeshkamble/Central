@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Views.PanelList1V">
+    <ContentView.Content>
+        <Grid 
+            RowSpacing="0" 
+            ColumnSpacing="0"
+            Margin="0">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Title-->
+            <VerticalStackLayout
+                Grid.Row="0"
+                IsVisible="{Binding IsViewTitle1, FallbackValue=false}">
+                
+                <temp:LabelTitleV 
+                    Text="{Binding Title1}"/>
+
+                <StackLayout
+                    HeightRequest="5"/>
+            </VerticalStackLayout>
+          
+            <!--List-->
+            <FlexLayout 
+                x:Name="flex1"
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                Direction="Row"
+                AlignItems="Start"
+                Wrap="Wrap"
+                BindableLayout.ItemsSource="{Binding Items}"
+                BindableLayout.ItemTemplate="{Binding Template}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

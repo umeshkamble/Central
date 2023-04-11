@@ -1,0 +1,1214 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Central.App"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             xmlns:view="clr-namespace:Central.App.Views"
+             x:Class="Central.App.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <ResourceDictionary Source="Themes/ThemeLight.xaml" />
+
+            <!--LabelStyle-->
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="FontRegular"/>
+                <Setter Property="LineBreakMode" Value="WordWrap"/>
+            </Style>
+            <Style TargetType="temp:LabelTitleV" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="TextColor" Value="{DynamicResource ClrPrimary}"/>
+                <Setter Property="FontFamily" Value="FontTitle"/>
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+            <Style TargetType="temp:LabelNormalV" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+            <Style TargetType="temp:LabelHintV" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource ClrTextHint}"/>
+            </Style>
+            <Style TargetType="temp:LabelIconV" BasedOn="{StaticResource LabelStyle}">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontFamily" Value="FontAwesome"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{DynamicResource ClrPrimary}"/>
+            </Style>
+
+
+            <!--EntryStyle-->
+            <Style TargetType="temp:EntryV">
+                <Setter Property="FontFamily" Value="FontRegular"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <!--EditorStyle-->
+            <Style TargetType="temp:EditorV">
+                <Setter Property="FontFamily" Value="FontRegular"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <!--DatePickerStyle-->
+            <Style TargetType="temp:DatePickerV">
+                <Setter Property="FontFamily" Value="FontRegular"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <!--SwitchStyle-->
+            <Style TargetType="temp:SwitchV"/>
+
+            <!--ButtonStyle-->
+            <Style x:Key="ButtonStyle" TargetType="temp:ButtonV">
+                <Setter Property="BackgroundColor" Value="{DynamicResource ClrPrimary}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily" Value="FontTitle"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+            <Style TargetType="temp:ButtonNormalV" BasedOn="{StaticResource ButtonStyle}">
+            </Style>
+
+            <!--SearchBarStyle-->
+            <Style TargetType="temp:SearchBarV">
+                <Setter Property="Margin" Value="0,-5,0,-5"/>
+                <Setter Property="FontFamily" Value="FontRegular"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <!--FrameStyle-->
+            <Style TargetType="temp:FrameV">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <!--ImageStyle-->
+            <Style x:Key="ImageStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFill"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+            <Style TargetType="temp:ImageV" BasedOn="{StaticResource ImageStyle}"/>
+
+            <!--BoxViewStyle-->
+            <Style x:Key="BoxViewStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="{DynamicResource ClrSilver}" />
+                <Setter Property="HeightRequest" Value="1"/>
+            </Style>
+            <Style TargetType="temp:BoxViewV" BasedOn="{StaticResource BoxViewStyle}">
+            </Style>
+
+            <!--PanelVStyle-->
+            <Style x:Key="PanelVStyle" TargetType="temp:PanelV">
+                <Setter Property="PnId" Value="{Binding Id}"/>
+                <Setter Property="PnNo" Value="{Binding No}"/>
+                <Setter Property="PnTitle1" Value="{Binding Title1}"/>
+                <Setter Property="PnTitle2" Value="{Binding Title2}"/>
+                <Setter Property="PnViewTitle1" Value="{Binding IsViewTitle1}"/>
+                <Setter Property="PnViewTitle2" Value="{Binding IsViewTitle2}"/>
+                <Setter Property="PnSelected" Value="{Binding IsSelected}"/>
+                <Setter Property="PnVisible" Value="{Binding IsVisible}"/>
+                <Setter Property="PnReadOnly" Value="{Binding IsReadOnly}"/>
+                <Setter Property="PnImageSource" Value="{Binding ImageSource}"/>
+
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnPadding" Value="5"/>
+                <Setter Property="PnBackgroundColor" Value="Transparent"/>
+                <Setter Property="PnBorderColor" Value="{DynamicResource ClrSilver}"/>
+                <Setter Property="PnTextColor1" Value="{DynamicResource ClrTextHint}"/>
+                <Setter Property="PnTextColor2" Value="{DynamicResource ClrTextNormal}"/>
+                <Setter Property="PnTextColor3" Value="{DynamicResource ClrTextNormal}"/>
+
+                <Setter Property="PnSelectCommand" Value="{Binding SelectCommand}"/>
+                <Setter Property="PnActionCommand" Value="{Binding ActionCommand}"/>
+
+                <Style.Triggers>
+                    <!--Select-->
+                    <Trigger TargetType="temp:PanelV" Property="PnSelected" Value="True">
+                        <Setter Property="PnBorderColor" Value="{StaticResource ClrPrimary}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!--InputTStyle-->
+            <Style x:Key="InputTStyle" TargetType="temp:InputT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTextHint1" Value="{Binding TextHint1}"/>
+                <Setter Property="PnTextHint2" Value="{Binding TextHint2}"/>
+                <Setter Property="PnTextHelper" Value="{Binding TextHelper}"/>
+                <Setter Property="PnIcon" Value="{Binding Icon}"/>
+                <Setter Property="PnFontAttributes" Value="{Binding FontAttributes}"/>
+                <Setter Property="PnReadOnly" Value="{Binding IsReadOnly}"/>
+                <Setter Property="PnFocus" Value="{Binding IsFocus}"/>
+                <Setter Property="PnViewTextHint1" Value="{Binding IsViewTextHint1}"/>
+                <Setter Property="PnViewTextHint2" Value="{Binding IsViewTextHint2}"/>
+                <Setter Property="PnViewIcon" Value="{Binding IsViewIcon}"/>
+                <Setter Property="PnViewLine" Value="{Binding IsViewLine}"/>
+
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+
+            <!--InputTextTStyle-->
+            <Style x:Key="InputTextTStyle" TargetType="temp:InputTextT" BasedOn="{StaticResource InputTStyle}">
+                <Setter Property="PnText" Value="{Binding Text, Mode=TwoWay}"/>
+                <Setter Property="PnTextAlignment" Value="{Binding TextAlignment}"/>
+                <Setter Property="PnTextLength" Value="{Binding TextLength}"/>
+                <Setter Property="PnMaxLength" Value="{Binding MaxLength}"/>
+                <Setter Property="PnKeyboard" Value="{Binding Keyboard}"/>
+                <Setter Property="PnPassword" Value="{Binding IsPassword}"/>
+                <Setter Property="PnTextChangedCommand" Value="{Binding TextChangedCommand}"/>
+                <Setter Property="PnLeaveCommand" Value="{Binding LeaveCommand}"/>
+                <Setter Property="PnEnterCommand" Value="{Binding EnterCommand}"/>
+            </Style>
+            <Style TargetType="temp:InputText1V" BasedOn="{StaticResource InputTextTStyle}"/>
+            <Style TargetType="temp:InputText2V" BasedOn="{StaticResource InputTextTStyle}"/>
+            <Style TargetType="temp:InputText3V" BasedOn="{StaticResource InputTextTStyle}"/>
+            <Style TargetType="temp:InputText4V" BasedOn="{StaticResource InputTextTStyle}">
+                <Setter Property="PnPadding" Value="10,5,10,5"/>
+                <Setter Property="PnBorderColor" Value="{DynamicResource ClrGray}"/>
+            </Style>
+            <Style TargetType="temp:InputTextSearchV" BasedOn="{StaticResource InputTextTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,-5"/>
+                <Setter Property="PnBackgroundColor" Value="{DynamicResource ClrSilver}"/>
+                <Setter Property="PnSearchCommand" Value="{Binding SearchCommand}"/>
+                <Setter Property="PnSearchEnterCommand" Value="{Binding SearchEnterCommand}"/>
+                <Setter Property="PnSearchDelayCommand" Value="{Binding SearchDelayCommand}"/>
+            </Style>
+
+
+            <!--InputDateTStyle-->
+            <Style x:Key="InputDateTStyle" TargetType="temp:InputDateT" BasedOn="{StaticResource InputTStyle}">
+                <Setter Property="PnValue" Value="{Binding Value, Mode=TwoWay}"/>
+                <Setter Property="PnValueMin" Value="{Binding ValueMin}"/>
+                <Setter Property="PnValueMax" Value="{Binding ValueMax}"/>
+                <Setter Property="PnValueChangedCommand" Value="{Binding ValueChangedCommand}"/>
+            </Style>
+            <Style TargetType="temp:InputDateV" BasedOn="{StaticResource InputDateTStyle}"/>
+
+            <!--InputSwitchTStyle-->
+            <Style x:Key="InputSwitchTStyle" TargetType="temp:InputSwitchT" BasedOn="{StaticResource InputTStyle}">
+                <Setter Property="PnOn" Value="{Binding IsOn, Mode=TwoWay}"/>
+                <Setter Property="PnCheckedChangedCommand" Value="{Binding CheckedChangedCommand}"/>
+            </Style>
+            <Style TargetType="temp:InputSwitchV" BasedOn="{StaticResource InputSwitchTStyle}"/>
+
+            <!--InputPickerTStyle-->
+            <Style x:Key="InputPickerTStyle" TargetType="temp:InputPickerT" BasedOn="{StaticResource InputTStyle}">
+                <Setter Property="PnText" Value="{Binding Text}"/>
+                <Setter Property="PnIcon2" Value="{Binding Icon2}"/>
+                <Setter Property="PnPickerChangedCommand" Value="{Binding PickerChangedCommand}"/>
+            </Style>
+            <Style TargetType="temp:InputPickerV" BasedOn="{StaticResource InputPickerTStyle}"/>
+
+
+            <!--InputRateTStyle-->
+            <Style x:Key="InputRateTStyle" TargetType="temp:InputRateT" BasedOn="{StaticResource InputTStyle}">
+                <Setter Property="PnRateVM" Value="{Binding RateVM}"/>
+            </Style>
+            <Style TargetType="temp:InputRateV" BasedOn="{StaticResource InputRateTStyle}"/>
+            
+            
+            <!--PINTStyle-->
+            <Style x:Key="PINTStyle" TargetType="temp:PINT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnInputPIN1VM" Value="{Binding InputPIN1VM}"/>
+                <Setter Property="PnInputPIN2VM" Value="{Binding InputPIN2VM}"/>
+                <Setter Property="PnInputPIN3VM" Value="{Binding InputPIN3VM}"/>
+                <Setter Property="PnInputPIN4VM" Value="{Binding InputPIN4VM}"/>
+                <Setter Property="PnInputPIN5VM" Value="{Binding InputPIN5VM}"/>
+                <Setter Property="PnInputPIN6VM" Value="{Binding InputPIN6VM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="temp:PINV" BasedOn="{StaticResource PINTStyle}"/>
+
+            <!--MenuTStyle-->
+            <Style x:Key="MenuTStyle" TargetType="temp:MenuT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnIcon" Value="{Binding Icon}"/>
+                <Setter Property="PnViewIcon" Value="{Binding IsViewIcon}"/>
+                <Setter Property="PnViewSpace" Value="{Binding IsViewSpace}"/>
+            </Style>
+            <Style TargetType="temp:Menu1V" BasedOn="{StaticResource MenuTStyle}">
+            </Style>
+            <Style TargetType="temp:Menu2V" BasedOn="{StaticResource MenuTStyle}">
+            </Style>
+            <Style TargetType="temp:Menu3V" BasedOn="{StaticResource MenuTStyle}">
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+
+            <DataTemplate x:Key="MenuGrid">
+                <temp:Menu1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="MenuList">
+                <temp:Menu2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="MenuT1">
+                <temp:Menu3V/>
+            </DataTemplate>
+
+
+            <!--ContactTStyleV-->
+            <Style x:Key="ContactTStyle" TargetType="temp:ContactT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnKota" Value="{Binding Kota}"/>
+                <Setter Property="PnNoTlp" Value="{Binding NoTlp}"/>
+            </Style>
+
+            <!--ContactEditVStyle-->
+            <Style x:Key="ContactEditVStyle" TargetType="temp:ContactEditV" BasedOn="{StaticResource ContactTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputEmailVM" Value="{Binding InputEmailVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+
+                <Setter Property="PnAddressMenuListVM" Value="{Binding AddressMenuListVM}"/>
+                <Setter Property="PnPhoneMenuListVM" Value="{Binding PhoneMenuListVM}"/>
+                
+                <Setter Property="PnAddressListVM" Value="{Binding AddressListVM}"/>
+                <Setter Property="PnPhoneListVM" Value="{Binding PhoneListVM}"/>
+
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnPadding" Value="0"/>
+            </Style>
+
+            
+            
+            <!--CustomerTStyle-->
+            <Style x:Key="CustomerTStyle" TargetType="temp:CustomerT" BasedOn="{StaticResource ContactTStyle}"/>
+            <Style TargetType="temp:Customer1V" BasedOn="{StaticResource CustomerTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Customer2V" BasedOn="{StaticResource CustomerTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:CustomerEditV" BasedOn="{StaticResource ContactEditVStyle}">
+                <Setter Property="PnInputSalesmanVM" Value="{Binding InputSalesmanVM}"/>
+                <Setter Property="PnInputLamaJTVM" Value="{Binding InputLamaJTVM}"/>
+                <Setter Property="PnInputPlafondVM" Value="{Binding InputPlafondVM}"/>
+                <Setter Property="PnInputNoNPWPVM" Value="{Binding InputNoNPWPVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="CustomerGrid">
+                <temp:Customer1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="CustomerList">
+                <temp:Customer2V/>
+            </DataTemplate>
+
+            <!--SalesmanTStyle-->
+            <Style x:Key="SalesmanTStyle" TargetType="temp:SalesmanT" BasedOn="{StaticResource ContactTStyle}"/>
+            <Style TargetType="temp:Salesman1V" BasedOn="{StaticResource SalesmanTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Salesman2V" BasedOn="{StaticResource SalesmanTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:SalesmanEditV" BasedOn="{StaticResource ContactEditVStyle}"/>
+
+            <DataTemplate x:Key="SalesmanGrid">
+                <temp:Salesman1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="SalesmanList">
+                <temp:Salesman2V/>
+            </DataTemplate>
+
+
+            <!--StoreTStyle-->
+            <Style x:Key="StoreTStyle" TargetType="temp:StoreT" BasedOn="{StaticResource ContactTStyle}"/>
+            <Style TargetType="temp:Store1V" BasedOn="{StaticResource StoreTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Store2V" BasedOn="{StaticResource StoreTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <!--StoreEditV-->
+            <Style TargetType="temp:StoreEditV" BasedOn="{StaticResource ContactEditVStyle}">
+                <Setter Property="PnInputNoNPWPVM" Value="{Binding InputNoNPWPVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="StoreGrid">
+                <temp:Store1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="StoreList">
+                <temp:Store2V/>
+            </DataTemplate>
+           
+            
+            <!--SuplierTStyle-->
+            <Style x:Key="SuplierTStyle" TargetType="temp:SuplierT" BasedOn="{StaticResource ContactTStyle}"/>
+            <Style TargetType="temp:Suplier1V" BasedOn="{StaticResource SuplierTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Suplier2V" BasedOn="{StaticResource SuplierTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:SuplierEditV" BasedOn="{StaticResource ContactEditVStyle}">
+                <Setter Property="PnInputLamaJTVM" Value="{Binding InputLamaJTVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="SuplierGrid">
+                <temp:Suplier1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="SuplierList">
+                <temp:Suplier2V/>
+            </DataTemplate>
+            
+            
+
+            <!--UserTStyle-->
+            <Style x:Key="UserTStyle" TargetType="temp:UserT" BasedOn="{StaticResource ContactTStyle}"/>
+            <Style TargetType="temp:User1V" BasedOn="{StaticResource UserTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:User2V" BasedOn="{StaticResource UserTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:UserEditV" BasedOn="{StaticResource ContactEditVStyle}">
+                <Setter Property="PnInputUsernameVM" Value="{Binding InputUsernameVM}"/>
+                <Setter Property="PnInputPasswordVM" Value="{Binding InputPasswordVM}"/>
+                <Setter Property="PnInputPasswordNewVM" Value="{Binding InputPasswordNewVM}"/>
+                <Setter Property="PnInputPasswordNewRetypeVM" Value="{Binding InputPasswordNewRetypeVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="UserGrid">
+                <temp:User1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="UserList">
+                <temp:User2V/>
+            </DataTemplate>
+
+
+
+
+            
+
+            
+
+
+           
+
+            
+
+
+            <!--VariantTStyle-->
+            <Style x:Key="VariantTStyle" TargetType="temp:VariantT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnDeskripsi" Value="{Binding Deskripsi}"/>
+
+                <Setter Property="PnInputVM" Value="{Binding InputVM}"/>
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+            </Style>
+            <Style TargetType="temp:Variant1V" BasedOn="{StaticResource VariantTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Variant2V" BasedOn="{StaticResource VariantTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:VariantInfoV" BasedOn="{StaticResource VariantTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="temp:VariantEditV" BasedOn="{StaticResource VariantTStyle}">
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+
+            <DataTemplate x:Key="VariantGrid">
+                <temp:Variant1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="VariantList">
+                <temp:Variant2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="VariantInfo">
+                <temp:VariantInfoV/>
+            </DataTemplate>
+
+
+
+
+
+            <!--ProductVariantTStyle-->
+            <Style x:Key="ProductVariantTStyle" TargetType="temp:ProductVariantT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnInputVariantVM" Value="{Binding InputVariantVM}"/>
+                <Setter Property="PnInputQtyVM" Value="{Binding InputQtyVM}"/>
+                
+                <Setter Property="PnInputRateEceranVM" Value="{Binding InputRateEceranVM}"/>
+                <Setter Property="PnInputRateAppVM" Value="{Binding InputRateAppVM}"/>
+                <Setter Property="PnInputRateModalVM" Value="{Binding InputRateModalVM}"/>
+                
+                <Setter Property="PnInputNoBarcodeVM" Value="{Binding InputNoBarcodeVM}"/>
+                <Setter Property="PnInputWeightVM" Value="{Binding InputWeightVM}"/>
+                <Setter Property="PnInputDimensionPVM" Value="{Binding InputDimensionPVM}"/>
+                <Setter Property="PnInputDimensionLVM" Value="{Binding InputDimensionLVM}"/>
+                <Setter Property="PnInputDimensionTVM" Value="{Binding InputDimensionTVM}"/>
+            </Style>
+
+            <Style TargetType="temp:ProductVariantEditV" BasedOn="{StaticResource ProductVariantTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,10"/>
+                <Setter Property="PnPadding" Value="5"/>
+            </Style>
+            
+            <DataTemplate x:Key="ProductVariantEdit1">
+                <temp:ProductVariantEditV/>
+            </DataTemplate>
+
+            
+            <!--BankTStyle-->
+            <Style x:Key="BankTStyle" TargetType="temp:BankT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalRp" Value="{Binding TotalRp}"/>
+            </Style>
+            <Style TargetType="temp:Bank1V" BasedOn="{StaticResource BankTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Bank2V" BasedOn="{StaticResource BankTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:BankEditV" BasedOn="{StaticResource BankTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="BankGrid">
+                <temp:Bank1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="BankList">
+                <temp:Bank2V/>
+            </DataTemplate>
+
+
+            <!--KasTStyle-->
+            <Style x:Key="KasTStyle" TargetType="temp:KasT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalRp" Value="{Binding TotalRp}"/>
+            </Style>
+            <Style TargetType="temp:Kas1V" BasedOn="{StaticResource KasTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Kas2V" BasedOn="{StaticResource KasTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:KasEditV" BasedOn="{StaticResource KasTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="KasGrid">
+                <temp:Kas1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="KasList">
+                <temp:Kas2V/>
+            </DataTemplate>
+
+            <!--QRISTStyle-->
+            <Style x:Key="QRISTStyle" TargetType="temp:QRIST" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalRp" Value="{Binding TotalRp}"/>
+            </Style>
+            <Style TargetType="temp:QRIS1V" BasedOn="{StaticResource QRISTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:QRIS2V" BasedOn="{StaticResource QRISTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:QRISEditV" BasedOn="{StaticResource QRISTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnInputBankVM" Value="{Binding InputBankVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="QRISGrid">
+                <temp:QRIS1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="QRISList">
+                <temp:QRIS2V/>
+            </DataTemplate>
+
+
+
+            <!--ProductBrandTStyle-->
+            <Style x:Key="ProductBrandTStyle" TargetType="temp:ProductBrandT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalItem" Value="{Binding TotalItem}"/>
+            </Style>
+            <Style TargetType="temp:ProductBrand1V" BasedOn="{StaticResource ProductBrandTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:ProductBrand2V" BasedOn="{StaticResource ProductBrandTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:ProductBrandEditV" BasedOn="{StaticResource ProductBrandTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+            
+
+            <DataTemplate x:Key="ProductBrandGrid">
+                <temp:ProductBrand1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="ProductBrandList">
+                <temp:ProductBrand2V/>
+            </DataTemplate>
+
+
+            <!--ProductCategoryTStyle-->
+            <Style x:Key="ProductCategoryTStyle" TargetType="temp:ProductCategoryT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalItem" Value="{Binding TotalItem}"/>
+            </Style>
+            <Style TargetType="temp:ProductCategory1V" BasedOn="{StaticResource ProductCategoryTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:ProductCategory2V" BasedOn="{StaticResource ProductCategoryTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:ProductCategoryEditV" BasedOn="{StaticResource ProductCategoryTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+            
+            <DataTemplate x:Key="ProductCategoryGrid">
+                <temp:ProductCategory1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="ProductCategoryList">
+                <temp:ProductCategory2V/>
+            </DataTemplate>
+
+
+
+
+            <!--ProductWarehouseTStyle-->
+            <Style x:Key="ProductWarehouseTStyle" TargetType="temp:ProductWarehouseT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotalItem" Value="{Binding TotalItem}"/>
+            </Style>
+            <Style TargetType="temp:ProductWarehouse1V" BasedOn="{StaticResource ProductWarehouseTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:ProductWarehouse2V" BasedOn="{StaticResource ProductWarehouseTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:ProductWarehouseEditV" BasedOn="{StaticResource ProductWarehouseTStyle}">
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="ProductWarehouseGrid">
+                <temp:ProductWarehouse1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="ProductWarehouseList">
+                <temp:ProductWarehouse2V/>
+            </DataTemplate>
+
+
+            <!--ProductTStyle-->
+            <Style x:Key="ProductTStyle" TargetType="temp:ProductT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnRateVM" Value="{Binding RateVM}"/>
+                <Setter Property="PnInputNamaVM" Value="{Binding InputNamaVM}"/>
+                <Setter Property="PnInputNoItemVM" Value="{Binding InputNoItemVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnInputSwitchPPNVM" Value="{Binding InputSwitchPPNVM}"/>
+                <Setter Property="PnInputKategoriVM" Value="{Binding InputKategoriVM}"/>
+                <Setter Property="PnInputBrandVM" Value="{Binding InputBrandVM}"/>
+                <Setter Property="PnInputSuplierVM" Value="{Binding InputSuplierVM}"/>
+                <Setter Property="PnVariantMenuListVM" Value="{Binding VariantMenuListVM}"/>
+                <Setter Property="PnVariantListVM" Value="{Binding VariantListVM}"/>
+                <Setter Property="PnProductVariantListVM" Value="{Binding ProductVariantListVM}"/>
+            </Style>
+            <Style TargetType="temp:Product1V" BasedOn="{StaticResource ProductTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Product2V" BasedOn="{StaticResource ProductTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:ProductEditV" BasedOn="{StaticResource ProductTStyle}">
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="ProductGrid">
+                <temp:Product1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="ProductList">
+                <temp:Product2V/>
+            </DataTemplate>
+
+
+            <!--RateTStyle-->
+            <Style x:Key="RateTStyle" TargetType="temp:RateT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnRateMode" Value="{Binding RateMode}"/>
+                <Setter Property="PnUnit" Value="{Binding Unit}"/>
+                <Setter Property="PnUnitQty" Value="{Binding UnitQty}"/>
+                <Setter Property="PnHrgNormal" Value="{Binding HrgNormal}"/>
+                <Setter Property="PnDiskonRp" Value="{Binding DiskonRp}"/>
+                <Setter Property="PnDiskon1" Value="{Binding Diskon1}"/>
+                <Setter Property="PnDiskon2" Value="{Binding Diskon2}"/>
+                <Setter Property="PnDiskon3" Value="{Binding Diskon3}"/>
+                <Setter Property="PnHrgPublish" Value="{Binding HrgPublish}"/>
+                <Setter Property="PnTotalDiskonRp" Value="{Binding TotalDiskonRp}"/>
+                <Setter Property="PnTotalDiskon" Value="{Binding TotalDiskon}"/>
+                <Setter Property="PnDeskripsi" Value="{Binding Deskripsi}"/>
+                <Setter Property="PnViewDiskon" Value="{Binding IsDiskon}"/>
+                
+                <Setter Property="PnInputHrgNormalVM" Value="{Binding InputHrgNormalVM}"/>
+                <Setter Property="PnInputDiskonRpVM" Value="{Binding InputDiskonRpVM}"/>
+                <Setter Property="PnInputDiskon1VM" Value="{Binding InputDiskon1VM}"/>
+                <Setter Property="PnInputDiskon2VM" Value="{Binding InputDiskon2VM}"/>
+                <Setter Property="PnInputDiskon3VM" Value="{Binding InputDiskon3VM}"/>
+                <Setter Property="PnInputHrgPublishVM" Value="{Binding InputHrgPublishVM}"/>
+            </Style>
+            <Style TargetType="temp:Rate1V" BasedOn="{StaticResource RateTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Rate2V" BasedOn="{StaticResource RateTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:Rate3V" BasedOn="{StaticResource RateTStyle}">
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="temp:Rate4V" BasedOn="{StaticResource RateTStyle}">
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="temp:RateEditV" BasedOn="{StaticResource RateTStyle}">
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="RateGrid">
+                <temp:Rate1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="RateList">
+                <temp:Rate2V/>
+            </DataTemplate>
+
+
+
+
+
+            <!--CityTStyle-->
+            <Style x:Key="CityTStyle" TargetType="temp:CityT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTitle1" Value="{Binding Nama}"/>
+                <Setter Property="PnKode" Value="{Binding Kode}"/>
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:City1V" BasedOn="{StaticResource CityTStyle}"/>
+            <Style TargetType="temp:City2V" BasedOn="{StaticResource CityTStyle}"/>
+            <Style TargetType="temp:City3V" BasedOn="{StaticResource CityTStyle}">
+                <Setter Property="PnPadding" Value="10"/>
+                <Setter Property="PnMargin" Value="0,0,5,0"/>
+                <Setter Property="PnTextColor1" Value="{DynamicResource ClrPrimary}"/>
+                <Setter Property="PnBackgroundColor" Value="{DynamicResource ClrSecondary}"/>
+            </Style>
+
+            <DataTemplate x:Key="CityGrid">
+                <temp:City1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="CityList">
+                <temp:City2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="CityT1">
+                <temp:City3V/>
+            </DataTemplate>
+
+            <!--KeywordTStyle-->
+            <Style TargetType="temp:KeywordV" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnText" Value="{Binding Text}"/>
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+
+            <DataTemplate x:Key="KeywordGrid">
+                <temp:KeywordV/>
+            </DataTemplate>
+            <DataTemplate x:Key="KeywordList">
+                <temp:KeywordV/>
+            </DataTemplate>
+            <DataTemplate x:Key="KeywordT1">
+                <temp:KeywordV/>
+            </DataTemplate>
+
+            <!--SortTStyle-->
+            <Style TargetType="temp:SortV" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTitle1" Value="{Binding Text}"/>
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+
+            <DataTemplate x:Key="SortGrid">
+                <temp:SortV/>
+            </DataTemplate>
+            <DataTemplate x:Key="SortList">
+                <temp:SortV/>
+            </DataTemplate>
+            <DataTemplate x:Key="SortT1">
+                <temp:SortV/>
+            </DataTemplate>
+
+
+            
+            <!--AddressTStyle-->
+            <Style x:Key="AddressTStyle" TargetType="temp:AddressT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnAlamat" Value="{Binding Alamat}"/>
+                <Setter Property="PnKota" Value="{Binding Kota}"/>
+            </Style>
+            <Style TargetType="temp:Address1V" BasedOn="{StaticResource AddressTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Address2V" BasedOn="{StaticResource AddressTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:AddressEditV" BasedOn="{StaticResource AddressTStyle}">
+                <Setter Property="PnInputAlamatVM" Value="{Binding InputAlamatVM}"/>
+                <Setter Property="PnInputKecamatanVM" Value="{Binding InputKecamatanVM}"/>
+                <Setter Property="PnInputKelurahanVM" Value="{Binding InputKelurahanVM}"/>
+                <Setter Property="PnInputKodePosVM" Value="{Binding InputKodePosVM}"/>
+                <Setter Property="PnInputKotaVM" Value="{Binding InputKotaVM}"/>
+                <Setter Property="PnInputProvinsiVM" Value="{Binding InputProvinsiVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="AddressGrid">
+                <temp:Address1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="AddressList">
+                <temp:Address2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="AddressT1">
+                <temp:AddressEditV/>
+            </DataTemplate>
+           
+
+            <!--PhoneTStyle-->
+            <Style x:Key="PhoneTStyle" TargetType="temp:PhoneT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnDeskripsi" Value="{Binding Deskripsi}"/>
+                <Setter Property="PnNoTlp" Value="{Binding NoTlp}"/>
+            </Style>
+            <Style TargetType="temp:Phone1V" BasedOn="{StaticResource PhoneTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:Phone2V" BasedOn="{StaticResource PhoneTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PhoneEditV" BasedOn="{StaticResource PhoneTStyle}">
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+                <Setter Property="PnInputNoTlpVM" Value="{Binding InputNoTlpVM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="PhoneGrid">
+                <temp:Phone1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PhoneList">
+                <temp:Phone2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PhoneT1">
+                <temp:PhoneEditV/>
+            </DataTemplate>
+
+
+
+
+            <!--HSumTStyle-->
+            <Style x:Key="HSumTStyle" TargetType="temp:HSumT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnSubTotal" Value="{Binding SubTotal}"/>
+                <Setter Property="PnDiskonItem" Value="{Binding DiskonItem}"/>
+                <Setter Property="PnDiskonFakturPersen" Value="{Binding DiskonFakturPersen}"/>
+                <Setter Property="PnDiskonFaktur" Value="{Binding DiskonFaktur}"/>
+                <Setter Property="PnPPN" Value="{Binding PPN}"/>
+                <Setter Property="PnPPNPersen" Value="{Binding PPNPersen}"/>
+                <Setter Property="PnBiaya" Value="{Binding Biaya}"/>
+                <Setter Property="PnInputSwitchPpnVM" Value="{Binding InputSwitchPpnVM}"/>
+                <Setter Property="PnIcon2" Value="{Binding Icon2}"/>
+                <Setter Property="PnEditDiskonCommand" Value="{Binding EditDiskonCommand}"/>
+
+                <Setter Property="PnInputSubTotalVM" Value="{Binding InputSubTotalVM}"/>
+                <Setter Property="PnInputDiskonFakturPersenVM" Value="{Binding InputDiskonFakturPersenVM}"/>
+                <Setter Property="PnInputDiskonFakturVM" Value="{Binding InputDiskonFakturVM}"/>
+            </Style>
+            <Style TargetType="temp:HSumV" BasedOn="{StaticResource HSumTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:HSumEditV" BasedOn="{StaticResource HSumTStyle}">
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <!--TRTStyle-->
+            <Style x:Key="TRTStyle" TargetType="temp:TRT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTgl" Value="{Binding Tgl}"/>
+                <Setter Property="PnTglJT" Value="{Binding TglJT}"/>
+                <Setter Property="PnNamaClient" Value="{Binding NamaClient}"/>
+                <Setter Property="PnNamaOperator" Value="{Binding NamaOperator}"/>
+                <Setter Property="PnNoFaktur" Value="{Binding NoFaktur}"/>
+                <Setter Property="PnNoReferensi" Value="{Binding NoReferensi}"/>
+                <Setter Property="PnTotalTransaksi" Value="{Binding TotalTransaksi}"/>
+                <Setter Property="PnTotalSetor" Value="{Binding TotalSetor}"/>
+                <Setter Property="PnTotalBalance" Value="{Binding TotalBalance}"/>
+
+                <Setter Property="PnInputClientVM" Value="{Binding InputClientVM}"/>
+                <Setter Property="PnBillToVM" Value="{Binding BillToVM}"/>
+                <Setter Property="PnShipToVM" Value="{Binding ShipToVM}"/>
+                <Setter Property="PnPhoneVM" Value="{Binding PhoneVM}"/>
+                <Setter Property="PnDetailMenuListVM" Value="{Binding DetailMenuListVM}"/>
+                <Setter Property="PnDetailListVM" Value="{Binding DetailListVM}"/>
+                <Setter Property="PnHSumVM" Value="{Binding HSumVM}"/>
+            </Style>
+
+            <Style x:Key="TREditVStyle" TargetType="temp:TREditV" BasedOn="{StaticResource TRTStyle}">
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            
+            <!--PITStyle-->
+            <Style x:Key="PITStyle" TargetType="temp:PIT" BasedOn="{StaticResource TRTStyle}"/>
+            <Style TargetType="temp:PI1V" BasedOn="{StaticResource PITStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PI2V" BasedOn="{StaticResource PITStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PIEditV" BasedOn="{StaticResource TREditVStyle}"/>
+
+            <DataTemplate x:Key="PIGrid">
+                <temp:PI1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PIList">
+                <temp:PI2V/>
+            </DataTemplate>
+            
+
+            <!--TRDetailTStyle-->
+            <Style x:Key="TRDetailTStyle" TargetType="temp:TRDetailT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnHrgNormal" Value="{Binding Rate.HrgNormal}"/>
+                <Setter Property="PnHrgPublish" Value="{Binding Rate.HrgPublish}"/>
+                <Setter Property="PnTotalDiskon" Value="{Binding Rate.TotalDiskon}"/>
+                <Setter Property="PnUnit" Value="{Binding Rate.Unit}"/>
+                <Setter Property="PnStok" Value="{Binding Stok}"/>
+                <Setter Property="PnQty" Value="{Binding Qty}"/>
+                <Setter Property="PnHrg" Value="{Binding Rate.HrgNormal}"/>
+                <Setter Property="PnTotal" Value="{Binding DSum.Total}"/>
+                <Setter Property="PnDiskon" Value="{Binding DSum.TotalDiskonRp}"/>
+
+                <Setter Property="PnNote" Value="{Binding Note}"/>
+                <Setter Property="PnVariant" Value="{Binding Variant}"/>
+                <Setter Property="PnWarehouse" Value="{Binding Warehouse}"/>
+                <Setter Property="PnTotalWeight" Value="{Binding TotalWeight}"/>
+                <Setter Property="PnTotalVolume" Value="{Binding TotalVolume}"/>
+
+                <Setter Property="PnViewPPN" Value="{Binding IsPPN}"/>
+                <Setter Property="PnViewNote" Value="{Binding IsViewNote}"/>
+                <Setter Property="PnViewNoteInput" Value="{Binding IsViewNoteInput}"/>
+                <Setter Property="PnViewVariant" Value="{Binding IsViewVariant}"/>
+                <Setter Property="PnViewDiskon" Value="{Binding IsViewDiskon}"/>
+                <Setter Property="PnViewDetail" Value="{Binding IsViewDetail}"/>
+
+                <Setter Property="PnMenuMinVM" Value="{Binding MenuMinVM}"/>
+                <Setter Property="PnMenuMaxVM" Value="{Binding MenuMaxVM}"/>
+                <Setter Property="PnMenuNoteVM" Value="{Binding MenuNoteVM}"/>
+                <Setter Property="PnMenuExpandVM" Value="{Binding MenuExpandVM}"/>
+
+                <Setter Property="PnInputQtyVM" Value="{Binding InputQtyVM}"/>
+                <Setter Property="PnInputNoteVM" Value="{Binding InputNoteVM}"/>
+
+                <Setter Property="PnVariantGrupListVM" Value="{Binding VariantGrupListVM}"/>
+                <Setter Property="PnRateListVM" Value="{Binding RateListVM}"/>
+                <Setter Property="PnRateVM" Value="{Binding RateVM}"/>
+                <Setter Property="PnProductWarehouseListVM" Value="{Binding ProductWarehouseListVM}"/>
+            </Style>
+
+            <!--TRDetailEditVStyle-->
+            <Style x:Key="TRDetailEdit1VStyle" TargetType="temp:TRDetailEdit1V" BasedOn="{StaticResource TRDetailTStyle}">
+                <Setter Property="PnPadding" Value="1,1,5,0"/>
+                <Setter Property="PnMargin" Value="0,0,0,10"/>
+            </Style>
+            <Style x:Key="TRDetailEdit2VStyle" TargetType="temp:TRDetailEdit2V" BasedOn="{StaticResource TRDetailTStyle}">
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+            </Style>
+
+            <!--PIDetailTStyle-->
+            <Style x:Key="PIDetailTStyle" TargetType="temp:PIDetailT" BasedOn="{StaticResource TRDetailTStyle}"/>
+            <Style TargetType="temp:PIDetail1V" BasedOn="{StaticResource PIDetailTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PIDetail2V" BasedOn="{StaticResource PIDetailTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PIDetailEdit1V" BasedOn="{StaticResource TRDetailEdit1VStyle}"/>
+            <Style TargetType="temp:PIDetailEdit2V" BasedOn="{StaticResource TRDetailEdit2VStyle}"/>
+
+            <DataTemplate x:Key="PIDetailGrid">
+                <temp:PIDetail1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PIDetailList">
+                <temp:PIDetail2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PIDetailEdit1">
+                <temp:PIDetailEdit1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PIDetailEdit2">
+                <temp:PIDetailEdit2V/>
+            </DataTemplate>
+
+
+            <!--PayVariantTStyle-->
+            <Style x:Key="PayVariantTStyle" TargetType="temp:PayVariantT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnTotal" Value="{Binding Total}"/>
+                <Setter Property="PnTotalItem" Value="{Binding TotalItem}"/>
+                <Setter Property="PnIcon2" Value="{Binding Icon2}"/>
+            </Style>
+            <Style TargetType="temp:PayVariant1V" BasedOn="{StaticResource PayVariantTStyle}">
+                <Setter Property="PnPadding" Value="5"/>
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PayVariant2V" BasedOn="{StaticResource PayVariantTStyle}">
+                <Setter Property="PnBorderColor" Value="{DynamicResource ClrSecondary}"/>
+                <Setter Property="PnBackgroundColor" Value="{DynamicResource ClrSilver}"/>
+
+                <Setter Property="PnPadding" Value="5"/>
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+
+            <Style TargetType="temp:PayVariantEditV" BasedOn="{StaticResource PayVariantTStyle}">
+                <Setter Property="PnPayCashListVM" Value="{Binding PayCashListVM}"/>
+                <Setter Property="PnPayCekListVM" Value="{Binding PayCekListVM}"/>
+                <Setter Property="PnPayBGListVM" Value="{Binding PayBGListVM}"/>
+                <Setter Property="PnPayTransferListVM" Value="{Binding PayTransferListVM}"/>
+                <Setter Property="PnViewCash" Value="{Binding IsViewCash}"/>
+                <Setter Property="PnViewCek" Value="{Binding IsViewCek}"/>
+                <Setter Property="PnViewBG" Value="{Binding IsViewBG}"/>
+                <Setter Property="PnViewTransfer" Value="{Binding IsViewTransfer}"/>
+                
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <DataTemplate x:Key="PayVariantGrid">
+                <temp:PayVariant1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayVariantList">
+                <temp:PayVariant2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayVariantEdit1">
+                <temp:PayVariantEditV/>
+            </DataTemplate>
+
+
+
+
+            <!--PayTStyle-->
+            <Style x:Key="PayTStyle" TargetType="temp:PayT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTgl" Value="{Binding Tgl}"/>
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnNoReferensi" Value="{Binding NoReferensi}"/>
+                <Setter Property="PnTotal" Value="{Binding Total}"/>
+                <Setter Property="PnDeskripsi" Value="{Binding Deskripsi}"/>
+                <Setter Property="PnDeskripsi2" Value="{Binding Deskripsi2}"/>
+            </Style>
+
+            <Style x:Key="PayEditVStyle" TargetType="temp:PayEditV" BasedOn="{StaticResource PayTStyle}">
+                <Setter Property="PnInputNoReferensiVM" Value="{Binding InputNoReferensiVM}"/>
+                <Setter Property="PnInputTotalVM" Value="{Binding InputTotalVM}"/>
+                <Setter Property="PnInputDeskripsiVM" Value="{Binding InputDeskripsiVM}"/>
+
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0"/>
+            </Style>
+
+            <!--PayCash-->
+            <Style x:Key="PayCashTStyle" TargetType="temp:PayCashT" BasedOn="{StaticResource PayTStyle}"/>
+            <Style TargetType="temp:PayCash1V" BasedOn="{StaticResource PayCashTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PayCash2V" BasedOn="{StaticResource PayCashTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PayCashEditV" BasedOn="{StaticResource PayEditVStyle}"/>
+
+            <DataTemplate x:Key="PayCashGrid">
+                <temp:PayCash1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayCashList">
+                <temp:PayCash2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayCashEdit1">
+                <temp:PayCashEditV/>
+            </DataTemplate>
+
+
+            <!--PayTransfer-->
+            <Style x:Key="PayTransferTStyle" TargetType="temp:PayTransferT" BasedOn="{StaticResource PayTStyle}"/>
+            <Style TargetType="temp:PayTransfer1V" BasedOn="{StaticResource PayTransferTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PayTransfer2V" BasedOn="{StaticResource PayTransferTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PayTransferEditV" BasedOn="{StaticResource PayEditVStyle}">
+                <Setter Property="PnInputTglTransferVM" Value="{Binding InputTglTransferVM}"/>
+                <Setter Property="PnInputBankVM" Value="{Binding InputBankVM}"/>
+
+                <Setter Property="PnInputKasVM" Value="{Binding InputKasVM}"/>
+                <Setter Property="PnInputQRISVM" Value="{Binding InputQRISVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="PayTransferGrid">
+                <temp:PayTransfer1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayTransferList">
+                <temp:PayTransfer2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayTransferEdit1">
+                <temp:PayTransferEditV/>
+            </DataTemplate>
+
+            <!--PayBG-->
+            <Style x:Key="PayBGTStyle" TargetType="temp:PayBGT" BasedOn="{StaticResource PayTStyle}"/>
+            <Style TargetType="temp:PayBG1V" BasedOn="{StaticResource PayBGTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PayBG2V" BasedOn="{StaticResource PayBGTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PayBGEditV" BasedOn="{StaticResource PayEditVStyle}">
+                <Setter Property="PnInputBankVM" Value="{Binding InputBankVM}"/>
+                <Setter Property="PnInputTglBGVM" Value="{Binding InputTglBGVM}"/>
+                <Setter Property="PnInputTglJTVM" Value="{Binding InputTglJTVM}"/>
+                <Setter Property="PnInputNoRekeningPenerimaVM" Value="{Binding InputNoRekeningPenerimaVM}"/>
+                <Setter Property="PnInputNamaPenerimaVM" Value="{Binding InputNamaPenerimaVM}"/>
+                <Setter Property="PnInputBankPenerimaVM" Value="{Binding InputBankPenerimaVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="PayBGGrid">
+                <temp:PayBG1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayBGList">
+                <temp:PayBG2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayBGEdit1">
+                <temp:PayBGEditV/>
+            </DataTemplate>
+
+
+            <!--PayCek-->
+            <Style x:Key="PayCekTStyle" TargetType="temp:PayCekT" BasedOn="{StaticResource PayTStyle}"/>
+            <Style TargetType="temp:PayCek1V" BasedOn="{StaticResource PayCekTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PayCek2V" BasedOn="{StaticResource PayCekTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PayCekEditV" BasedOn="{StaticResource PayEditVStyle}">
+                <Setter Property="PnInputKasBankVM" Value="{Binding InputKasBankVM}"/>
+                <Setter Property="PnInputTglCekVM" Value="{Binding InputTglCekVM}"/>
+                <Setter Property="PnInputNamaPenerimaVM" Value="{Binding InputNamaPenerimaVM}"/>
+            </Style>
+
+            <DataTemplate x:Key="PayCekGrid">
+                <temp:PayCek1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayCekList">
+                <temp:PayCek2V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PayCekEdit1">
+                <temp:PayCekEditV/>
+            </DataTemplate>
+
+
+            <!--PMTStyle-->
+            <Style x:Key="PMTStyle" TargetType="temp:PMT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnGrup" Value="{Binding Grup}"/>
+                <Setter Property="PnMode" Value="{Binding Mode}"/>
+                <Setter Property="PnTgl" Value="{Binding Tgl}"/>
+                <Setter Property="PnNoReferensis" Value="{Binding NoReferensis}"/>
+                <Setter Property="PnNama" Value="{Binding Nama}"/>
+                <Setter Property="PnDeskripsi" Value="{Binding Deskripsi}"/>
+                <Setter Property="PnPSumVM" Value="{Binding PSumVM}"/>
+            </Style>
+            <Style TargetType="temp:PM1V" BasedOn="{StaticResource PMTStyle}">
+                <Setter Property="PnMargin" Value="0,0,5,5"/>
+            </Style>
+            <Style TargetType="temp:PM2V" BasedOn="{StaticResource PMTStyle}">
+                <Setter Property="PnMargin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="temp:PMEditV" BasedOn="{StaticResource PMTStyle}">
+                <Setter Property="PnPayVariantList1VM" Value="{Binding PayVariantList1VM}"/>
+                <Setter Property="PnPayVariantList2VM" Value="{Binding PayVariantList2VM}"/>
+                <Setter Property="PnBorderColor" Value="Transparent"/>
+                <Setter Property="PnPadding" Value="0"/>
+                <Setter Property="PnMargin" Value="0,10,0,0"/>
+            </Style>
+
+            <DataTemplate x:Key="PMGrid">
+                <temp:PM1V/>
+            </DataTemplate>
+            <DataTemplate x:Key="PMList">
+                <temp:PM2V/>
+            </DataTemplate>
+
+
+            <!--PSumTStyle-->
+            <Style x:Key="PSumTStyle" TargetType="temp:PSumT" BasedOn="{StaticResource PanelVStyle}">
+                <Setter Property="PnTagihan" Value="{Binding Tagihan}"/>
+                <Setter Property="PnPoint" Value="{Binding Point}"/>
+                <Setter Property="PnPromo" Value="{Binding Promo}"/>
+                <Setter Property="PnBayar" Value="{Binding Bayar}"/>
+                <Setter Property="PnSisa" Value="{Binding Sisa}"/>
+                <Setter Property="PnKembalian" Value="{Binding Kembalian}"/>
+                <Setter Property="PnSplit" Value="{Binding IsSplit}"/>
+                <Setter Property="PnIncludePoint" Value="{Binding IncludePoint}"/>
+                <Setter Property="PnPromoText" Value="{Binding PromoText}"/>
+
+                <Setter Property="PnInputSwitchSplitVM" Value="{Binding InputSwitchSplitVM}"/>
+                <Setter Property="PnInputSwitchPointVM" Value="{Binding InputSwitchPointVM}"/>
+                <Setter Property="PnInputPromoVM" Value="{Binding InputPromoVM}"/>
+            </Style>
+            <Style TargetType="temp:PSumV" BasedOn="{StaticResource PSumTStyle}">
+                <Setter Property="PnMargin" Value="0,5,0,15"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

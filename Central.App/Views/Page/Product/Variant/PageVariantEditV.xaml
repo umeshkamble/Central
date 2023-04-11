@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageMasterEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:view="clr-namespace:Central.App.Views"
+                xmlns:temp="clr-namespace:Central.App.Templates"
+                x:Class="Central.App.Views.PageVariantEditV">
+
+    <view:PageMasterEditV.Edit>
+        <temp:VariantEditV/>
+    </view:PageMasterEditV.Edit>
+
+    <view:PageMasterEditV.EditFooter>
+        <temp:ButtonNormalV
+            Text="Simpan"
+            Command="{Binding SaveCommand}"/>
+    </view:PageMasterEditV.EditFooter>
+
+</view:PageMasterEditV>

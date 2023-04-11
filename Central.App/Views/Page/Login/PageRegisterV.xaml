@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:view="clr-namespace:Central.App.Views"
+			xmlns:temp="clr-namespace:Central.App.Templates"
+			x:Class="Central.App.Views.PageRegisterV">
+
+    <view:PageV.Body>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{OnIdiom Phone=Auto, Default=*}"/>
+                <ColumnDefinition Width="{OnIdiom Phone=*, Default=500}"/>
+                <ColumnDefinition Width="{OnIdiom Phone=Auto, Default=*}"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout
+				Grid.Row="1"
+				Grid.Column="1"
+				VerticalOptions="Center"
+				Margin="10,-50,10,0">
+
+                <temp:LabelTitleV
+					Text="Create Account"/>
+
+                <temp:LabelNormalV
+					Text="Register"/>
+
+                <StackLayout 
+                    HeightRequest="20"/>
+
+                <temp:InputText4V
+					BindingContext="{Binding InputNamaVM}"/>
+
+                <temp:InputText4V
+					BindingContext="{Binding InputEmailVM}"/>
+
+                <temp:InputText4V
+					BindingContext="{Binding InputNoTlpVM}"/>
+
+                <temp:InputText4V
+					BindingContext="{Binding InputPasswordVM}"/>
+
+                <temp:InputText4V
+					BindingContext="{Binding InputPasswordRetypeVM}"/>
+
+                <temp:LabelHintV
+                    Margin="0,5,0,5"
+                    Text="PIN (Super Admin)"/>
+
+                <StackLayout
+                    Margin="0">
+                    <temp:PINV
+                        BindingContext="{Binding PINVM}"/>
+                </StackLayout>
+               
+
+                <temp:ButtonNormalV
+					Margin="0,0,0,20"
+					Text="Register"
+					Command="{Binding RegisterCommand}"/>
+
+                <HorizontalStackLayout
+					Margin="0,0,0,0"
+					HorizontalOptions="Center">
+                    <temp:LabelNormalV
+						Text="Belum dapat kode OTP ? "/>
+
+                    <temp:LabelNormalV
+						Text="Kirim Ulang"
+						FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+
+    </view:PageV.Body>
+
+</view:PageV>

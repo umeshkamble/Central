@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:ContactT
+    x:Class="Central.App.Templates.ContactEditV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+    <temp:ContactT.Body>
+        <Grid ColumnSpacing="0" RowSpacing="50">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  Info General  -->
+            <Grid
+                Grid.Row="0"
+                ColumnSpacing="0"
+                RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Title  -->
+                <temp:LabelTitleV Grid.Row="0" Text="Info Umum" />
+
+                <!--  InputNama  -->
+                <!--
+                    <temp:InputText1V
+                        Grid.Row="1"
+                        BindingContext="{Binding PnInputNamaVM}"/>
+
+                -->
+                <!--  InputEmail  -->
+                <!--
+                    <temp:InputText1V
+                        Grid.Row="2"
+                        BindingContext="{Binding PnInputEmailVM}"/>
+
+                -->
+                <!--  InputDeskripsi  -->
+                <!--
+                    <temp:InputText2V
+                        Grid.Row="3"
+                        BindingContext="{Binding PnInputDeskripsiVM}"/>-->
+            </Grid>
+
+            <!--  Info Address  -->
+            <!--<Grid
+                Grid.Row="1"
+                ColumnSpacing="0"
+                RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                --><!--  Title  --><!--
+                <HorizontalStackLayout
+                    Grid.Row="0"
+                    Spacing="10"
+                    VerticalOptions="CenterAndExpand">
+                    <temp:LabelTitleV Text="Info Alamat" />
+
+                    <view:PanelList2V BindingContext="{Binding PnAddressMenuListVM}" />
+                </HorizontalStackLayout>
+
+
+                --><!--  AddressList  --><!--
+                <view:PanelList3V Grid.Row="1" BindingContext="{Binding PnAddressListVM}" />
+            </Grid>
+
+            --><!--  Info Phone  --><!--
+            <Grid
+                Grid.Row="2"
+                ColumnSpacing="0"
+                RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                --><!--  Title  --><!--
+                <HorizontalStackLayout
+                    Grid.Row="0"
+                    Spacing="10"
+                    VerticalOptions="CenterAndExpand">
+                    <temp:LabelTitleV Text="Info Telepon" />
+
+                    <view:PanelList2V BindingContext="{Binding PnPhoneMenuListVM}" />
+                </HorizontalStackLayout>
+
+                --><!--  PhoneList  --><!--
+                <view:PanelList3V Grid.Row="1" BindingContext="{Binding PnPhoneListVM}" />
+            </Grid>-->
+
+            <!--  Info Lain  -->
+            <ContentView x:Name="ContentBodyContact" Grid.Row="3" />
+        </Grid>
+
+    </temp:ContactT.Body>
+</temp:ContactT>

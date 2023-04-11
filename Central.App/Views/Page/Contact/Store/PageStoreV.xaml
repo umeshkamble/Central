@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:PageContactV
+    x:Class="Central.App.Views.PageStoreV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+    <view:PageContactV.List>
+        <VerticalStackLayout VerticalOptions="Center">
+            <view:ContentStoreListV />
+            <Button Clicked="Button_Clicked" Text="click me" />
+        </VerticalStackLayout>
+    </view:PageContactV.List>
+
+    <view:PageContactV.Info>
+        <VerticalStackLayout>
+            <temp:Store1V />
+        </VerticalStackLayout>
+    </view:PageContactV.Info>
+
+
+    <view:PageContactV.InfoFooter>
+        <temp:ButtonNormalV Text="Open Store (Panel)" />
+    </view:PageContactV.InfoFooter>
+</view:PageContactV>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PayVariantT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.PayVariant1V">
+
+    <temp:PayVariantT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="5">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Image-->
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="25"
+                WidthRequest="25"
+                Aspect="AspectFit"
+                Source="{Binding PnImageSource}"/>
+
+            <!--Nama-->
+            <temp:LabelHintV
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnNama}"/>
+
+
+        </Grid>
+    </temp:PayVariantT.Body>
+    
+    
+</temp:PayVariantT>

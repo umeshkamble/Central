@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:ProductVariantT  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:temp="clr-namespace:Central.App.Templates"
+                        x:Class="Central.App.Templates.ProductVariantEditV">
+
+    <temp:ProductVariantT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--No-->
+            <temp:LabelNormalV 
+                Grid.Row="0"
+                Grid.Column="0"
+                WidthRequest="20"
+                Margin="0,5,0,0"
+                VerticalOptions="Start"
+                FontAttributes="Bold"
+                Text="{Binding PnNo, FallbackValue='1.', StringFormat='{0:#,##0}.'}"/>
+
+            <!--InputVariant-->
+            <temp:InputText3V
+                Grid.Row="0"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputVariantVM}"/>
+
+            <!--InputQty-->
+            <temp:InputText3V
+                Grid.Row="1"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputQtyVM}"/>
+
+            <!--InputRateEceran-->
+            <temp:InputRateV
+                Grid.Row="2"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputRateEceranVM}"/>
+
+            <!--InputRateApp-->
+            <temp:InputRateV
+                Grid.Row="3"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputRateAppVM}"/>
+
+            <!--InputRateModal-->
+            <temp:InputRateV
+                Grid.Row="4"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputRateModalVM}"/>
+
+            <!--InputNoBarcode-->
+            <temp:InputText3V
+                Grid.Row="5"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputNoBarcodeVM}"/>
+
+            <!--InputWeight-->
+            <temp:InputText3V
+                Grid.Row="6"
+                Grid.Column="1"
+                BindingContext="{Binding PnInputWeightVM}"/>
+
+            <temp:LabelHintV
+                Grid.Row="7"
+                Grid.Column="1"
+                TextColor="{Binding PnTextColor1}"
+                Text="Dimensi (P x L x T) cm"/>
+
+            <HorizontalStackLayout
+                Grid.Row="8"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand">
+
+                <!--InputDimensionP-->
+                <temp:InputText3V
+                    WidthRequest="50"
+                    BindingContext="{Binding PnInputDimensionPVM}"/>
+
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text=" X "/>
+
+                <!--InputDimensionL-->
+                <temp:InputText3V
+                    WidthRequest="50"
+                    BindingContext="{Binding PnInputDimensionLVM}"/>
+
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text=" X "/>
+                
+                <!--InputDimensionT-->
+                <temp:InputText3V
+                    WidthRequest="50"
+                    BindingContext="{Binding PnInputDimensionTVM}"/>
+
+            </HorizontalStackLayout>
+        </Grid>
+    </temp:ProductVariantT.Body>
+    
+    
+</temp:ProductVariantT>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.PanelV"
+             x:Name="this">
+    <StackLayout
+        BindingContext="{x:Reference this}">
+        <temp:FrameV
+            Margin="{Binding PnMargin}"
+            Padding="{Binding PnPadding}"
+            BackgroundColor="{Binding PnBackgroundColor}"
+            BorderColor="{Binding PnBorderColor}"
+            IsVisible="{Binding PnVisible}">
+
+            <temp:FrameV.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PnSelectCommand}" NumberOfTapsRequired="1"/>
+                <TapGestureRecognizer Command="{Binding PnActionCommand}" NumberOfTapsRequired="2"/>
+            </temp:FrameV.GestureRecognizers>
+
+            <!--ContentList-->
+            <ContentView
+                x:Name="ContentBody"/>
+
+        </temp:FrameV>
+    </StackLayout>
+</ContentView>

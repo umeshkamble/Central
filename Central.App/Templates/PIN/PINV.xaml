@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PINT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:temp="clr-namespace:Central.App.Templates"
+           xmlns:behaviors="clr-namespace:Central.App.Behaviors"
+           x:Class="Central.App.Templates.PINV">
+
+    <temp:PINT.Body>
+        <HorizontalStackLayout
+            Margin="0"
+            Spacing="0">
+            <HorizontalStackLayout
+                Spacing="2">
+
+                <!--InputPIN1VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN1VM}"/>
+
+                <!--Line-->
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text="-"/>
+
+                <!--InputPIN2VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN2VM}"/>
+
+                <!--Line-->
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text="-"/>
+
+                <!--InputPIN3VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN3VM}"/>
+
+                <!--Line-->
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text="-"/>
+
+                <!--InputPIN4VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN4VM}"/>
+
+                <!--Line-->
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text="-"/>
+
+                <!--InputPIN5VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN5VM}"/>
+
+                <!--Line-->
+                <temp:LabelHintV
+                    VerticalOptions="Center"
+                    Text="-"/>
+
+                <!--InputPIN6VM-->
+                <temp:InputText4V
+                    WidthRequest="40"   
+                    BindingContext="{Binding PnInputPIN6VM}"/>
+            </HorizontalStackLayout>
+        </HorizontalStackLayout>
+    </temp:PINT.Body>
+</temp:PINT>

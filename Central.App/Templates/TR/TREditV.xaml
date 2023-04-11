@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:TRT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:temp="clr-namespace:Central.App.Templates"
+          xmlns:view="clr-namespace:Central.App.Views"
+          x:Class="Central.App.Templates.TREditV">
+    
+    <temp:TRT.Body>
+        <Grid
+            RowSpacing="50"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Client-->
+            <Grid
+                Grid.Row="0"
+                RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Client-->
+                <temp:LabelTitleV
+                    Grid.Row="0"
+                    Text="1. Pilih Suplier"/>
+
+                <!--InputClient-->
+                <temp:InputPickerV
+                    Grid.Row="1"
+                    PnMargin="0"
+                    PnPadding="0"
+                    BindingContext="{Binding PnInputClientVM}"/>
+
+                <!--BillTo,ShipTo,Phone-->
+                <Grid
+                    Grid.Row="2"
+                    RowSpacing="5"
+                    ColumnSpacing="5">
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*"/>
+                        <ColumnDefinition Width="0.50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--BillTo-->
+                    <temp:Address2V
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BindingContext="{Binding PnBillToVM}"/>
+                    
+                    <!--ShipTo-->
+                    <temp:Address2V
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        BindingContext="{Binding PnShipToVM}"/>
+
+                    <!--Phone-->
+                    <temp:Phone1V
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BindingContext="{Binding PnPhoneVM}"/>
+                </Grid>
+            </Grid>
+
+            <!--Product-->
+            <Grid
+                Grid.Row="1"
+                RowSpacing="5"
+                VerticalOptions="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Title & Menu-->
+                <Grid
+                    Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Detail-->
+                    <temp:LabelTitleV
+                        Grid.Column="0"
+                        Text="2. Pilih Produk"/>
+
+                    <!--DetailMenuListVM-->
+                    <view:PanelList2V
+                        Grid.Column="1"
+                        BindingContext="{Binding PnDetailMenuListVM}"/>
+                </Grid>
+
+                <!--DetailListVM-->
+                <view:PanelList3V
+                    Grid.Row="1"
+                    BindingContext="{Binding PnDetailListVM}"/>
+
+                <!--HSum-->
+                <temp:HSumV
+                    Grid.Row="2"
+                    BindingContext="{Binding PnHSumVM}"/>
+            </Grid>
+           
+        </Grid>
+    </temp:TRT.Body>
+</temp:TRT>

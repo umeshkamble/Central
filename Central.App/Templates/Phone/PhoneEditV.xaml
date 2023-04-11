@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PhoneT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:temp="clr-namespace:Central.App.Templates"
+            xmlns:view="clr-namespace:Central.App.Views"
+            x:Class="Central.App.Templates.PhoneEditV">
+
+    <temp:PhoneT.Body>
+        <Grid
+            RowSpacing="50"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <!--Info General-->
+            <Grid
+                Grid.Row="0"
+                RowSpacing="0"
+                ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--No-->
+                <temp:LabelNormalV 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="20"
+                    Margin="0,5,0,0"
+                    VerticalOptions="Start"
+                    FontAttributes="Bold"
+                    Text="{Binding PnNo, FallbackValue='1.', StringFormat='{0:#,##0}.'}"/>
+
+                <!--InputDeskripsi-->
+                <temp:InputText2V
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BindingContext="{Binding PnInputDeskripsiVM}"/>
+
+                <!--InputNoTlp-->
+                <temp:InputText2V
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BindingContext="{Binding PnInputNoTlpVM}"/>
+            </Grid>
+        </Grid>
+    </temp:PhoneT.Body>
+</temp:PhoneT>

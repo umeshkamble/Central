@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PayEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:temp="clr-namespace:Central.App.Templates"
+               x:Class="Central.App.Templates.PayBGEditV">
+    <temp:PayEditV.BodyPay>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--InputBank-->
+            <temp:InputPickerV
+                Grid.Row="0"    
+                BindingContext="{Binding PnInputBankVM}"/>
+
+            <!--InputTglBG-->
+            <temp:InputDateV
+                Grid.Row="1"    
+                BindingContext="{Binding PnInputTglBGVM}"/>
+
+            <!--InputTglJT-->
+            <temp:InputDateV
+                Grid.Row="2"    
+                BindingContext="{Binding PnInputTglJTVM}"/>
+
+            <!--InputNoRekeningPenerima-->
+            <temp:InputText3V
+                Grid.Row="3"    
+                BindingContext="{Binding PnInputNoRekeningPenerimaVM}"/>
+
+            <!--InputNamaPenerima-->
+            <temp:InputText3V
+                Grid.Row="4"    
+                BindingContext="{Binding PnInputNamaPenerimaVM}"/>
+
+            <!--InputBankPenerima-->
+            <temp:InputText3V
+                Grid.Row="5"    
+                BindingContext="{Binding PnInputBankPenerimaVM}"/>
+        </Grid>
+    </temp:PayEditV.BodyPay>
+</temp:PayEditV>

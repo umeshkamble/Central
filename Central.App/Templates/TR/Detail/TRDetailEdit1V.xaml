@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:TRDetailT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:temp="clr-namespace:Central.App.Templates"
+                xmlns:view="clr-namespace:Central.App.Views"
+                x:Class="Central.App.Templates.TRDetailEdit1V">
+
+    <temp:TRDetailT.Body>
+        <Grid 
+            RowSpacing="2" 
+            ColumnSpacing="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Border-->
+            <StackLayout
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Margin="0"
+                Padding="0"
+                VerticalOptions="Fill"
+                BackgroundColor="{DynamicResource ClrSecondary}"/>
+
+            <!--No-->
+            <temp:LabelHintV 
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding PnNo, FallbackValue='1.', StringFormat='{0:#,##0}.'}"/>
+
+            <!--Nama,Rate,Note-->
+            <VerticalStackLayout
+                Grid.Row="0"
+                Grid.Column="2"
+                Spacing="0">
+
+                <!--Nama Barang & PPN-->
+                <HorizontalStackLayout
+                    Spacing="2">
+
+                    <!--Nama Barang-->
+                    <temp:LabelHintV 
+                        VerticalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="{Binding PnTextColor2}"
+                        Text="{Binding PnNama, FallbackValue='Kaos Bola'}"/>
+
+                    <!--PPN-->
+                    <temp:FrameV
+                        VerticalOptions="Center"
+                        Margin="0,1,0,0"
+                        Padding="1,0,1,0"
+                        CornerRadius="5"
+                        BackgroundColor="{DynamicResource ClrSecondary}"
+                        IsVisible="{Binding PnViewPPN}">
+                        <temp:LabelHintV     
+                            VerticalTextAlignment="Center"
+                            Text="PPN"        
+                            FontSize="Micro"
+                            TextColor="{Binding PnTextColor1}"
+                            IsVisible="{Binding PnViewPPN}"/>
+                    </temp:FrameV>
+                </HorizontalStackLayout>
+
+                <!--Variant-->
+                <temp:LabelHintV 
+                    FontAttributes="Bold"
+                    TextColor="{Binding PnTextColor1}"
+                    Text="{Binding PnVariant, FallbackValue='Pcs, L, Hijau'}"
+                    IsVisible="{Binding PnViewVariant}"/>
+
+                <!--Rate-->
+                <HorizontalStackLayout
+                    Spacing="2">
+
+                    <!--Qty-->
+                    <temp:LabelHintV 
+                        VerticalOptions="Center"
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnQty, FallbackValue='3', StringFormat='{0:#,##0.###}'}"/>
+
+                    <temp:LabelHintV 
+                        VerticalOptions="Center"
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnUnit, FallbackValue=' pcs x ', StringFormat=' {0} x '}"/>
+
+                    <!--H.Normal-->
+                    <temp:LabelHintV 
+                        VerticalOptions="Center"
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnHrgNormal, FallbackValue='@25,000',StringFormat='@{0:#,##0.###}'}"/>
+
+                    <!--TotalDiskon-->
+                    <temp:FrameV
+                        VerticalOptions="Center"
+                        BackgroundColor="Red"
+                        Margin="0"
+                        Padding="1,0,1,0"
+                        CornerRadius="5"
+                        IsVisible="{Binding PnViewDiskon}">
+                        <temp:LabelHintV                                                                                                                                                
+                            VerticalTextAlignment="Center"
+                            TextColor="White"         
+                            Text="{Binding PnTotalDiskon, FallbackValue='-16%',StringFormat='-{0:#,##0.###}%'}"                                                    
+                            IsVisible="{Binding PnViewDiskon}"/>
+                    </temp:FrameV>
+                </HorizontalStackLayout>
+
+                <!--Note-->
+                <temp:LabelHintV 
+                    TextColor="{Binding PnTextColor1}"
+                    Text="{Binding PnNote, FallbackValue='* Paking aman kak...', StringFormat='* {0}'}"
+                    IsVisible="{Binding PnViewNote}"/>
+
+                <!--Weight, Volume, Warehouse-->
+                <StackLayout
+                    Spacing="0"
+                    IsVisible="{Binding PnViewDetail}">
+
+                    <!--TotalWeight-->
+                    <HorizontalStackLayout
+                        Spacing="0">
+
+                        <!--Weight-->
+                        <temp:LabelHintV 
+                            TextColor="{Binding PnTextColor1}"
+                            Text="* Berat : "/>
+
+                        <!--Weight-->
+                        <temp:LabelHintV 
+                            FontAttributes="Bold"
+                            TextColor="{Binding PnTextColor1}"
+                            Text="{Binding PnTotalWeight, FallbackValue='2,6 kg ', StringFormat='{0:#,##0.#} kg '}"/>
+
+                        <!--Qty-->
+                        <temp:LabelHintV 
+                            TextColor="{Binding PnTextColor1}"
+                            Text="{Binding PnQty, FallbackValue=' (3', StringFormat=' ({0:#,##0.###}'}"/>
+
+                        <!--Unit-->
+                        <temp:LabelHintV 
+                            TextColor="{Binding PnTextColor1}"
+                            Text="{Binding PnUnit, FallbackValue='Pcs)', StringFormat='{0:#,##0})'}"/>
+                    </HorizontalStackLayout>
+
+                    <!--TotalVolume-->
+                    <HorizontalStackLayout
+                        Spacing="0">
+
+                        <!--Volume-->
+                        <temp:LabelHintV 
+                            TextColor="{Binding PnTextColor1}"
+                            Text="* Volume : "/>
+
+                        <!--Volume-->
+                        <temp:LabelHintV 
+                            FontAttributes="Bold"
+                            TextColor="{Binding PnTextColor1}"
+                            Text="{Binding PnTotalVolume, FallbackValue='100 cm3', StringFormat='{0:#,##0.#} cm3'}"/>
+                    </HorizontalStackLayout>
+                    
+                    <!--Warehouse-->
+                    <temp:LabelHintV 
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnWarehouse, FallbackValue='* Lokasi : Gudang 1', StringFormat='* Lokasi : {0}'}"/>
+                </StackLayout>
+
+                <!--Note-->
+                <VerticalStackLayout
+                    Spacing="0"
+                    IsVisible="{Binding PnViewNoteInput}">
+
+                    <StackLayout
+                        HeightRequest="5"/>
+
+                    <temp:InputText4V
+                        VerticalOptions="Center"
+                        PnPadding="5,-2,5,-2"
+                        BindingContext="{Binding PnInputNoteVM}"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <!--Qty-->
+            <HorizontalStackLayout
+                Grid.Row="1"
+                Grid.Column="2"
+                Margin="0,5,0,0"
+                Spacing="0">
+
+                <!--MenuMinVM-->
+                <temp:Menu3V
+                    VerticalOptions="Center"
+                    BindingContext="{Binding PnMenuMinVM}"/>
+
+                <!--Qty-->
+                <temp:InputText4V
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    WidthRequest="70"
+                    PnPadding="5,-3,5,-3"
+                    PnFontAttributes="Bold"
+                    BindingContext="{Binding PnInputQtyVM}"/>
+
+                <!--MenuMaxVM-->
+                <temp:Menu3V
+                    VerticalOptions="Center"
+                    BindingContext="{Binding PnMenuMaxVM}"/>
+
+                <!--MenuNoteVM-->
+                <temp:Menu3V
+                    VerticalOptions="Center"
+                    BindingContext="{Binding PnMenuNoteVM}"/>
+            </HorizontalStackLayout>
+
+            <!--Total-->
+            <temp:LabelHintV 
+                Grid.Row="0"
+                Grid.Column="3"
+                HorizontalOptions="End"
+                TextColor="{Binding PnTextColor2}"
+                Text="{Binding PnTotal, FallbackValue='30,000', StringFormat='{0:#,##0}'}"/>
+
+            <!--DiskonRp-->
+            <temp:LabelHintV 
+                Grid.Row="1"
+                Grid.Column="3"
+                TextColor="Red"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Text="{Binding PnDiskon, FallbackValue='(4,000)', StringFormat='({0:#,##0})'}"
+                IsVisible="{Binding PnViewDiskon}"/>
+        </Grid>
+    </temp:TRDetailT.Body>
+
+
+</temp:TRDetailT>

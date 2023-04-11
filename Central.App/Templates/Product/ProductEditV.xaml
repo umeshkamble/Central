@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:ProductT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:temp="clr-namespace:Central.App.Templates"
+               xmlns:view="clr-namespace:Central.App.Views"
+               x:Class="Central.App.Templates.ProductEditV">
+    
+    <temp:ProductT.Body>
+            <Grid
+                RowSpacing="50"
+                ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Info General-->
+                <Grid
+                    Grid.Row="0"
+                    RowSpacing="0"
+                    ColumnSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Title-->
+                    <temp:LabelTitleV
+                        Grid.Row="0"
+                        Text="Info Umum"/>
+
+                    <!--InputNama-->
+                    <temp:InputText1V
+                        Grid.Row="1"    
+                        BindingContext="{Binding PnInputNamaVM}"/>
+
+                    <!--EntryNoItem-->
+                    <temp:InputText1V    
+                        Grid.Row="2"
+                        BindingContext="{Binding PnInputNoItemVM}"/>
+
+                    <!--InputDeskripsi-->
+                    <temp:InputText2V
+                        Grid.Row="3"    
+                        BindingContext="{Binding PnInputDeskripsiVM}"/>
+
+                    <!--InputSwitchPPN-->
+                    <temp:InputSwitchV
+                        Grid.Row="4"
+                        BindingContext="{Binding PnInputSwitchPPNVM}"/>
+
+                    <!--InputKategori-->
+                    <temp:InputPickerV
+                        Grid.Row="5"    
+                        BindingContext="{Binding PnInputKategoriVM}"/>
+
+                    <!--InputBrand-->
+                    <temp:InputPickerV
+                        Grid.Row="6"    
+                        BindingContext="{Binding PnInputBrandVM}"/>
+
+                    <!--InputSuplier-->
+                    <temp:InputPickerV
+                        Grid.Row="7"    
+                        BindingContext="{Binding PnInputSuplierVM}"/>
+                </Grid>
+
+                <!--Info Variant-->
+                <Grid
+                    Grid.Row="1"
+                    RowSpacing="0"
+                    ColumnSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Title-->
+                    <HorizontalStackLayout
+                        Grid.Row="0"
+                        Spacing="10"
+                        VerticalOptions="CenterAndExpand">
+                        <temp:LabelTitleV
+                            Text="Info Varian"/>
+
+                        <view:PanelList2V
+                            BindingContext="{Binding PnVariantMenuListVM}"/>
+                    </HorizontalStackLayout>
+
+                    <!--VariantList-->
+                    <view:PanelList3V
+                        Grid.Row="1"
+                        BindingContext="{Binding PnVariantListVM}"/>
+
+                    <!--ProductVariantList-->
+                    <view:PanelList3V
+                        Grid.Row="2"
+                        BindingContext="{Binding PnProductVariantListVM}"/>
+                </Grid>
+
+            </Grid>
+       
+    </temp:ProductT.Body>
+</temp:ProductT>

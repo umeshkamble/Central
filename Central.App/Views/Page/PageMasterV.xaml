@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageV
+    x:Class="Central.App.Views.PageMasterV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+    <view:PageV.Body>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ContentListWidth, FallbackValue='0.75*'}" />
+                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="{Binding ContentInfoWidth, FallbackValue='0.25*'}" />
+            </Grid.ColumnDefinitions>
+
+            <!--  ContentList  -->
+            <Grid
+                Grid.Column="0"
+                ColumnSpacing="0"
+                IsVisible="{Binding IsViewList}"
+                RowSpacing="0">
+                <ContentView x:Name="ContentList" BindingContext="{Binding ContentListVM}" />
+            </Grid>
+
+            <!--  Line  -->
+            <temp:BoxViewV Grid.Column="1" />
+
+            <!--  ContentInfo  -->
+            <Grid
+                Grid.Column="2"
+                ColumnSpacing="0"
+                RowSpacing="0">
+                <!--  IsVisible="{Binding IsViewInfo}">  -->
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  ContentInfo  -->
+                <ScrollView Grid.Row="0">
+                    <ContentView x:Name="ContentInfo" BindingContext="{Binding InfoVM}" />
+                </ScrollView>
+
+                <!--  ContentInfoFooter  -->
+                <ContentView x:Name="ContentInfoFooter" Grid.Row="1" />
+            </Grid>
+
+        </Grid>
+    </view:PageV.Body>
+</view:PageV>

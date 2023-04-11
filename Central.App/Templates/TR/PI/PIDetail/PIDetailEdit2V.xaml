@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:TRDetailEdit2V xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:temp="clr-namespace:Central.App.Templates"
+                    x:Class="Central.App.Templates.PIDetailEdit2V">
+
+</temp:TRDetailEdit2V>

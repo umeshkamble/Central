@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:InputTextT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:temp="clr-namespace:Central.App.Templates"
+                 xmlns:behaviors="clr-namespace:Central.App.Behaviors"
+                 x:Class="Central.App.Templates.InputText4V">
+
+    <temp:InputTextT.Body>
+        <Grid 
+            RowSpacing="0" 
+            ColumnSpacing="0" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Icon-->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Spacing="0"
+                VerticalOptions="Center"
+                IsVisible="{Binding PnViewIcon}">
+
+                <temp:LabelIconV
+                    Text="{Binding PnIcon}"/>
+                
+                <StackLayout 
+                    WidthRequest="10"/>
+            </HorizontalStackLayout>
+
+            <!--Text-->
+            <temp:EntryV
+                x:Name="entry1"
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding PnText, Mode=TwoWay}"
+                Placeholder="{Binding PnTextHelper, FallbackValue='Masukkan nama barang'}"
+                HorizontalTextAlignment="{Binding PnTextAlignment}"
+                MaxLength="{Binding PnMaxLength}"
+                Keyboard="{Binding PnKeyboard}"
+                FontAttributes="{Binding PnFontAttributes}"
+                IsPassword="{Binding PnPassword}"
+                IsReadOnly="{Binding PnReadOnly}">
+
+                <temp:EntryV.Behaviors>
+                    <behaviors:BehaviorEvent                             
+                        EventName="TextChanged"                     
+                        Command="{Binding PnTextChangedCommand}"/>
+
+                    <behaviors:BehaviorEvent                               
+                        EventName="Focused"                             
+                        Command="{Binding PnEnterCommand}"/>
+
+                    <behaviors:BehaviorEvent                                 
+                        EventName="Unfocused"                             
+                        Command="{Binding PnLeaveCommand}"/>
+                </temp:EntryV.Behaviors>
+            </temp:EntryV>
+        </Grid>
+    </temp:InputTextT.Body>
+</temp:InputTextT>

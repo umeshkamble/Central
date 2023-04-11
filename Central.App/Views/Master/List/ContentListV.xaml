@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<view:ContentV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+               xmlns:view="clr-namespace:Central.App.Views"
+               xmlns:temp="clr-namespace:Central.App.Templates"
+               x:Class="Central.App.Views.ContentListV">
+
+    <view:ContentV.Nav>
+        <temp:InputTextSearchV
+            BindingContext="{Binding InputTextSearchVM}"/>
+    </view:ContentV.Nav>
+
+    <view:ContentV.Header>
+        <ContentView
+            x:Name="ContentHeaderList"/>
+    </view:ContentV.Header>
+    
+    <view:ContentV.Body>
+        <view:PanelList1V
+            BindingContext="{Binding PanelListVM}"/>
+    </view:ContentV.Body>
+</view:ContentV>

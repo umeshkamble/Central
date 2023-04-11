@@ -1,0 +1,1265 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Central.App</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>Central.App</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.central.app</ApplicationId>
+		<ApplicationIdGuid>3FF6263C-B857-4239-BAD9-99CCC3BEF774</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="320,320" Color="White" />
+		
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Font-Awesome.otf" />
+	  <None Remove="Resources\Fonts\Font-Italic.otf" />
+	  <None Remove="Resources\Fonts\Font-Regular.otf" />
+	  <None Remove="Resources\Fonts\Font-Title.otf" />
+	  <None Remove="Resources\Images\bankbca.png" />
+	  <None Remove="Resources\Images\bankbni.png" />
+	  <None Remove="Resources\Images\bankbri.png" />
+	  <None Remove="Resources\Images\bankmandiri.png" />
+	  <None Remove="Resources\Images\dana.png" />
+	  <None Remove="Resources\Images\empty.jpg" />
+	  <None Remove="Resources\Images\gopay.png" />
+	  <None Remove="Resources\Images\icondashboard1.png" />
+	  <None Remove="Resources\Images\icondashboard2.png" />
+	  <None Remove="Resources\Images\iconhome1.png" />
+	  <None Remove="Resources\Images\iconhome2.png" />
+	  <None Remove="Resources\Images\iconnotification1.png" />
+	  <None Remove="Resources\Images\iconnotification2.png" />
+	  <None Remove="Resources\Images\iconofficial1.png" />
+	  <None Remove="Resources\Images\iconofficial2.png" />
+	  <None Remove="Resources\Images\iconproduct1.png" />
+	  <None Remove="Resources\Images\iconproduct2.png" />
+	  <None Remove="Resources\Images\iconscan1.png" />
+	  <None Remove="Resources\Images\iconscan2.png" />
+	  <None Remove="Resources\Images\iconsetup1.png" />
+	  <None Remove="Resources\Images\iconsetup2.png" />
+	  <None Remove="Resources\Images\icontrolly1.png" />
+	  <None Remove="Resources\Images\icontrolly2.png" />
+	  <None Remove="Resources\Images\iconwishlist1.png" />
+	  <None Remove="Resources\Images\iconwishlist2.png" />
+	  <None Remove="Resources\Images\kas.png" />
+	  <None Remove="Resources\Images\leaf.png" />
+	  <None Remove="Resources\Images\linkaja.png" />
+	  <None Remove="Resources\Images\login1.png" />
+	  <None Remove="Resources\Images\login2.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\ovo.png" />
+	  <None Remove="Resources\Images\product1.jpg" />
+	  <None Remove="Resources\Images\product2.jpg" />
+	  <None Remove="Resources\Images\product3.jpg" />
+	  <None Remove="Resources\Images\product4.jpg" />
+	  <None Remove="Resources\Images\product5.jpg" />
+	  <None Remove="Resources\Images\progress.gif" />
+	  <None Remove="Resources\Images\qris.png" />
+	  <None Remove="Resources\Images\shopeepay.png" />
+	  <None Remove="Resources\Images\test.png" />
+	  <None Remove="Resources\Images\transfer.png" />
+	  <None Remove="Resources\Images\tunai.png" />
+	  <None Remove="Resources\Raw\Monkey.json" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MongoDB.Driver" Version="2.19.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="AppShell1.xaml.cs">
+	    <DependentUpon>AppShell1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="AppShell2.xaml.cs">
+	    <DependentUpon>AppShell2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Address\Address1V.xaml.cs">
+	    <DependentUpon>Address1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Phone\Phone1V.xaml.cs">
+	    <DependentUpon>Phone1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Address\Address2V.xaml.cs">
+	    <DependentUpon>Address2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Phone\Phone2V.xaml.cs">
+	    <DependentUpon>Phone2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Address\AddressEditV.xaml.cs">
+	    <DependentUpon>AddressEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Phone\PhoneEditV.xaml.cs">
+	    <DependentUpon>PhoneEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PayVariant\PayVariantEditV.xaml.cs">
+	    <DependentUpon>PayVariantEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PayVariant\PayVariant2V.xaml.cs">
+	    <DependentUpon>PayVariant2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PayVariant\PayVariant1V.xaml.cs">
+	    <DependentUpon>PayVariant1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PayVariant\PayVariant1V.xaml.cs">
+	    <DependentUpon>PayVariant1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PayVariant\PayVariant2V.xaml.cs">
+	    <DependentUpon>PayVariant2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PM1V.xaml.cs">
+	    <DependentUpon>PM1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PM2V.xaml.cs">
+	    <DependentUpon>PM2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PMEditV.xaml.cs">
+	    <DependentUpon>PMEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCek\PayCek1V.xaml.cs">
+	    <DependentUpon>PayCek1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayBG\PayBG1V.xaml.cs">
+	    <DependentUpon>PayBG1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCek\PayCek2V.xaml.cs">
+	    <DependentUpon>PayCek2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCek\PayCekEditV.xaml.cs">
+	    <DependentUpon>PayCekEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayTransfer\PayTransfer1V.xaml.cs">
+	    <DependentUpon>PayTransfer1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayBG\PayBG2V.xaml.cs">
+	    <DependentUpon>PayBG2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayTransfer\PayTransfer2V.xaml.cs">
+	    <DependentUpon>PayTransfer2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayBG\PayBGEditV.xaml.cs">
+	    <DependentUpon>PayBGEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayTransfer\PayTransferEditV.xaml.cs">
+	    <DependentUpon>PayTransferEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCash\PayCashEditV.xaml.cs">
+	    <DependentUpon>PayCashEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayEditV.xaml.cs">
+	    <DependentUpon>PayEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Input\InputRate\InputRateV.xaml.cs">
+	    <DependentUpon>InputRateV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCash\PayCash1V.xaml.cs">
+	    <DependentUpon>PayCash1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\Pay\PayCash\PayCash2V.xaml.cs">
+	    <DependentUpon>PayCash2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Rate\Rate4V.xaml.cs">
+	    <DependentUpon>Rate4V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Rate\Rate3V.xaml.cs">
+	    <DependentUpon>Rate3V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Rate\Rate1V.xaml.cs">
+	    <DependentUpon>Rate1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Rate\RateEditV.xaml.cs">
+	    <DependentUpon>RateEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Rate\Rate2V.xaml.cs">
+	    <DependentUpon>Rate2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductVariant\ProductVariantEditV.xaml.cs">
+	    <DependentUpon>ProductVariantEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Variant\Variant1V.xaml.cs">
+	    <DependentUpon>Variant1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Variant\Variant2V.xaml.cs">
+	    <DependentUpon>Variant2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Bank\BankEditV.xaml.cs">
+	    <DependentUpon>BankEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Store\StoreEditV.xaml.cs">
+	    <DependentUpon>StoreEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\User\UserEditV.xaml.cs">
+	    <DependentUpon>UserEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\User\User1V.xaml.cs">
+	    <DependentUpon>User1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\User\User2V.xaml.cs">
+	    <DependentUpon>User2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Suplier\SuplierEditV.xaml.cs">
+	    <DependentUpon>SuplierEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Kas\KasEditV.xaml.cs">
+	    <DependentUpon>KasEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductEditV.xaml.cs">
+	    <DependentUpon>ProductEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductBrand\ProductBrandEditV.xaml.cs">
+	    <DependentUpon>ProductBrandEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductCategory\ProductCategoryEditV.xaml.cs">
+	    <DependentUpon>ProductCategoryEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductWarehouse\ProductWarehouseEditV.xaml.cs">
+	    <DependentUpon>ProductWarehouseEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Variant\VariantEditV.xaml.cs">
+	    <DependentUpon>VariantEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\QRIS\QRISEditV.xaml.cs">
+	    <DependentUpon>QRISEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\Detail\TRDetailEdit2V.xaml.cs">
+	    <DependentUpon>TRDetailEdit2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\HSum\HSumEditV.xaml.cs">
+	    <DependentUpon>HSumEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PM\PSum\PSumV.xaml.cs">
+	    <DependentUpon>PSumV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PIDetail\PIDetailEdit2V.xaml.cs">
+	    <DependentUpon>PIDetailEdit2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PIDetail\PIDetailEdit1V.xaml.cs">
+	    <DependentUpon>PIDetailEdit1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PIEditV.xaml.cs">
+	    <DependentUpon>PIEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\Detail\TRDetailEdit1V.xaml.cs">
+	    <DependentUpon>TRDetailEdit1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\TREditV.xaml.cs">
+	    <DependentUpon>TREditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\HSum\HSumV.xaml.cs">
+	    <DependentUpon>HSumV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PIDetail\PIDetail2V.xaml.cs">
+	    <DependentUpon>PIDetail2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PIDetail\PIDetail1V.xaml.cs">
+	    <DependentUpon>PIDetail1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PI1V.xaml.cs">
+	    <DependentUpon>PI1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\TR\PI\PI2V.xaml.cs">
+	    <DependentUpon>PI2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Product1V.xaml.cs">
+	    <DependentUpon>Product1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Product2V.xaml.cs">
+	    <DependentUpon>Product2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\Variant\VariantInfoV.xaml.cs">
+	    <DependentUpon>VariantInfoV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductBrand\ProductBrand1V.xaml.cs">
+	    <DependentUpon>ProductBrand1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductBrand\ProductBrand2V.xaml.cs">
+	    <DependentUpon>ProductBrand2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductCategory\ProductCategory1V.xaml.cs">
+	    <DependentUpon>ProductCategory1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductCategory\ProductCategory2V.xaml.cs">
+	    <DependentUpon>ProductCategory2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Customer\Customer1V.xaml.cs">
+	    <DependentUpon>Customer1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Customer\Customer2V.xaml.cs">
+	    <DependentUpon>Customer2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Suplier\Suplier2V.xaml.cs">
+	    <DependentUpon>Suplier2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Suplier\Suplier1V.xaml.cs">
+	    <DependentUpon>Suplier1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductWarehouse\ProductWarehouse1V.xaml.cs">
+	    <DependentUpon>ProductWarehouse1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Product\ProductWarehouse\ProductWarehouse2V.xaml.cs">
+	    <DependentUpon>ProductWarehouse2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\QRIS\QRIS1V.xaml.cs">
+	    <DependentUpon>QRIS1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Bank\Bank1V.xaml.cs">
+	    <DependentUpon>Bank1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\QRIS\QRIS2V.xaml.cs">
+	    <DependentUpon>QRIS2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Bank\Bank2V.xaml.cs">
+	    <DependentUpon>Bank2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\City\City3V.xaml.cs">
+	    <DependentUpon>City3V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Input\InputPicker\InputPickerV.xaml.cs">
+	    <DependentUpon>InputPickerV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Input\InputText\InputTextSearchV.xaml.cs">
+	    <DependentUpon>InputTextSearchV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Menu\Menu3V.xaml.cs">
+	    <DependentUpon>Menu3V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Menu\Menu2V.xaml.cs">
+	    <DependentUpon>Menu2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Menu\Menu1V.xaml.cs">
+	    <DependentUpon>Menu1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\PIN\PINV.xaml.cs">
+	    <DependentUpon>PINV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Input\InputText\InputText2V.xaml.cs">
+	    <DependentUpon>InputText2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Input\InputText\InputText1V.xaml.cs">
+	    <DependentUpon>InputText1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Sort\SortV.xaml.cs">
+	    <DependentUpon>SortV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\City\City1V.xaml.cs">
+	    <DependentUpon>City1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\City\City2V.xaml.cs">
+	    <DependentUpon>City2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Kas\Kas1V.xaml.cs">
+	    <DependentUpon>Kas1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Kas\Kas2V.xaml.cs">
+	    <DependentUpon>Kas2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Salesman\Salesman1V.xaml.cs">
+	    <DependentUpon>Salesman1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Salesman\Salesman2V.xaml.cs">
+	    <DependentUpon>Salesman2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Store\Store2V.xaml.cs">
+	    <DependentUpon>Store2V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Templates\Contact\Store\Store1V.xaml.cs">
+	    <DependentUpon>Store1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Themes\ThemeDark.xaml.cs">
+	    <DependentUpon>ThemeDark.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\ContentPMListV.xaml.cs">
+	    <DependentUpon>ContentPMListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\Pay\ContentPayTransferListV.xaml.cs">
+	    <DependentUpon>ContentPayTransferListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\Pay\ContentPayBGListV.xaml.cs">
+	    <DependentUpon>ContentPayBGListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\Pay\ContentPayCekListV.xaml.cs">
+	    <DependentUpon>ContentPayCekListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\Pay\ContentPayCashListV.xaml.cs">
+	    <DependentUpon>ContentPayCashListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\PM\Pay\ContentPayListV.xaml.cs">
+	    <DependentUpon>ContentPayListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\TR\ContentPIListV.xaml.cs">
+	    <DependentUpon>ContentPIListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\TR\ContentTRListV.xaml.cs">
+	    <DependentUpon>ContentTRListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\TR\ContentTRListV.xaml.cs">
+	    <DependentUpon>ContentTRListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Product\ContentProductListV.xaml.cs">
+	    <DependentUpon>ContentProductListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Product\ContentProductWarehouseListV.xaml.cs">
+	    <DependentUpon>ContentProductWarehouseListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Product\ContentProductCategoryListV.xaml.cs">
+	    <DependentUpon>ContentProductCategoryListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Product\ContentProductBrandListV.xaml.cs">
+	    <DependentUpon>ContentProductBrandListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\QRIS\ContentQRISListV.xaml.cs">
+	    <DependentUpon>ContentQRISListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Bank\ContentBankListV.xaml.cs">
+	    <DependentUpon>ContentBankListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Master\List\Kas\ContentKasListV.xaml.cs">
+	    <DependentUpon>ContentKasListV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\PayVariant\PageVariantEditV.xaml.cs">
+	    <DependentUpon>PageVariantEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\PagePMEditV.xaml.cs">
+	    <DependentUpon>PagePMEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\PagePMV.xaml.cs">
+	    <DependentUpon>PagePMV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\PM\PageFilterPMV.xaml.cs">
+	    <DependentUpon>PageFilterPMV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayTransfer\PagePayTransferEditV.xaml.cs">
+	    <DependentUpon>PagePayTransferEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayTransfer\PagePayTransferV.xaml.cs">
+	    <DependentUpon>PagePayTransferV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayCek\PagePayCekEditV.xaml.cs">
+	    <DependentUpon>PagePayCekEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayCek\PagePayCekV.xaml.cs">
+	    <DependentUpon>PagePayCekV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayCash\PagePayCashEditV.xaml.cs">
+	    <DependentUpon>PagePayCashEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayBG\PagePayBGEditV.xaml.cs">
+	    <DependentUpon>PagePayBGEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayCash\PagePayCashV.xaml.cs">
+	    <DependentUpon>PagePayCashV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PayBG\PagePayBGV.xaml.cs">
+	    <DependentUpon>PagePayBGV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PagePayEditV.xaml.cs">
+	    <DependentUpon>PagePayEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PM\Pay\PagePayV.xaml.cs">
+	    <DependentUpon>PagePayV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Pay\PageFilterPayTransferV.xaml.cs">
+	    <DependentUpon>PageFilterPayTransferV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Pay\PageFilterPayBGV.xaml.cs">
+	    <DependentUpon>PageFilterPayBGV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Pay\PageFilterPayCekV.xaml.cs">
+	    <DependentUpon>PageFilterPayCekV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Pay\PageFilterPayCashV.xaml.cs">
+	    <DependentUpon>PageFilterPayCashV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Pay\PageFilterPayV.xaml.cs">
+	    <DependentUpon>PageFilterPayV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\Rate\PageRateEditV.xaml.cs">
+	    <DependentUpon>PageRateEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PageTRDetailEditV.xaml.cs">
+	    <DependentUpon>PageTRDetailEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\PageMasterEditV.xaml.cs">
+	    <DependentUpon>PageMasterEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\HSum\PageHSumEditV.xaml.cs">
+	    <DependentUpon>PageHSumEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\TR\PageFilterTRV.xaml.cs">
+	    <DependentUpon>PageFilterTRV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PageTREditV.xaml.cs">
+	    <DependentUpon>PageTREditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PageTRV.xaml.cs">
+	    <DependentUpon>PageTRV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PI\PagePIDetailEditV.xaml.cs">
+	    <DependentUpon>PagePIDetailEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PI\PagePIEditV.xaml.cs">
+	    <DependentUpon>PagePIEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PI\PagePIV.xaml.cs">
+	    <DependentUpon>PagePIV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PageTREditV.xaml.cs">
+	    <DependentUpon>PageTREditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\TR\PageTRV.xaml.cs">
+	    <DependentUpon>PageTRV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\TR\PageFilterPIV.xaml.cs">
+	    <DependentUpon>PageFilterPIV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\TR\PageFilterTRV.xaml.cs">
+	    <DependentUpon>PageFilterTRV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Product\PageFilterProductV.xaml.cs">
+	    <DependentUpon>PageFilterProductV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Product\PageFilterProductWarehouseV.xaml.cs">
+	    <DependentUpon>PageFilterProductWarehouseV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Product\PageFilterProductBrandV.xaml.cs">
+	    <DependentUpon>PageFilterProductBrandV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Product\PageFilterProductCategoryV.xaml.cs">
+	    <DependentUpon>PageFilterProductCategoryV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\PageProductEditV.xaml.cs">
+	    <DependentUpon>PageProductEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\PageProductV.xaml.cs">
+	    <DependentUpon>PageProductV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductWarehouse\PageProductWarehouseEditV.xaml.cs">
+	    <DependentUpon>PageProductWarehouseEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductBrand\PageProductBrandEditV.xaml.cs">
+	    <DependentUpon>PageProductBrandEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductWarehouse\PageProductWarehouseV.xaml.cs">
+	    <DependentUpon>PageProductWarehouseV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductBrand\PageProductBrandV.xaml.cs">
+	    <DependentUpon>PageProductBrandV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductCategory\PageProductCategoryEditV.xaml.cs">
+	    <DependentUpon>PageProductCategoryEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Product\ProductCategory\PageProductCategoryV.xaml.cs">
+	    <DependentUpon>PageProductCategoryV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\QRIS\PageQRISEditV.xaml.cs">
+	    <DependentUpon>PageQRISEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\QRIS\PageQRISV.xaml.cs">
+	    <DependentUpon>PageQRISV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\QRIS\PageFilterQRISV.xaml.cs">
+	    <DependentUpon>PageFilterQRISV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Bank\PageFilterBankV.xaml.cs">
+	    <DependentUpon>PageFilterBankV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Bank\PageBankEditV.xaml.cs">
+	    <DependentUpon>PageBankEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Kas\PageKasEditV.xaml.cs">
+	    <DependentUpon>PageKasEditV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Bank\PageBankV.xaml.cs">
+	    <DependentUpon>PageBankV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Kas\PageKasV.xaml.cs">
+	    <DependentUpon>PageKasV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Filter\Kas\PageFilterKasV.xaml.cs">
+	    <DependentUpon>PageFilterKasV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main1\Official\PageOfficialV.xaml.cs">
+	    <DependentUpon>PageOfficialV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Login\PageStartupV.xaml.cs">
+	    <DependentUpon>PageStartupV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main1\Scan\PageScanV.xaml.cs">
+	    <DependentUpon>PageScanV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main2\Dashboard\PageDashboardV.xaml.cs">
+	    <DependentUpon>PageDashboardV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main2\PIN\PagePINV.xaml.cs">
+	    <DependentUpon>PagePINV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main1\Wishlist\PageWishlistV.xaml.cs">
+	    <DependentUpon>PageWishlistV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Page\Main1\Trolly\PageTrollyV.xaml.cs">
+	    <DependentUpon>PageTrollyV.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Panel\PanelList1V.xaml.cs">
+	    <DependentUpon>PanelList1V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Panel\PanelList3V.xaml.cs">
+	    <DependentUpon>PanelList3V.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Panel\PanelGrupListV.xaml.cs">
+	    <DependentUpon>PanelGrupListV.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Address\Address1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Phone\Phone1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Address\Address2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Phone\Phone2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Address\AddressEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Phone\PhoneEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PayVariant\PayVariantEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PayVariant\PayVariant1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PayVariant\PayVariant2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PM1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PM2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PMEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCek\PayCek1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayBG\PayBG1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCek\PayCek2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCek\PayCekEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayTransfer\PayTransfer1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayBG\PayBG2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayTransfer\PayTransfer2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayBG\PayBGEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayTransfer\PayTransferEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCash\PayCashEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputRate\InputRateV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCash\PayCash1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\Pay\PayCash\PayCash2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Rate\Rate4V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Rate\Rate3V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Rate\Rate1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Rate\RateEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Rate\Rate2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Variant\Variant1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Variant\Variant2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Variant\VariantEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\Detail\TRDetailEdit2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\HSum\HSumEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PM\PSum\PSumV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PIDetail\PIDetailEdit2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PIDetail\PIDetailEdit1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PIEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\Detail\TRDetailEdit1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\TREditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductWarehouse\ProductWarehouseEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductCategory\ProductCategoryEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductBrand\ProductBrandEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\QRIS\QRISEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Kas\KasEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Bank\BankEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\ContactEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\User\User1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\User\User2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\User\UserEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Suplier\SuplierEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Store\StoreEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Customer\CustomerEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Salesman\SalesmanEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\HSum\HSumV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PIDetail\PIDetail2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PIDetail\PIDetail1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PI1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\TR\PI\PI2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Product1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Product2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\Variant\VariantInfoV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductWarehouse\ProductWarehouse1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductBrand\ProductBrand1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductWarehouse\ProductWarehouse2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductCategory\ProductCategory1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductBrand\ProductBrand2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Product\ProductCategory\ProductCategory2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Customer\Customer1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Customer\Customer2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Suplier\Suplier1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Suplier\Suplier2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\QRIS\QRIS1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Bank\Bank1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\QRIS\QRIS2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Bank\Bank2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\City\City3V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputDate\InputDateV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputPicker\InputPickerV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputSwitch\InputSwitchV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputText\InputTextSearchV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Sort\SortV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Keyword\KeywordV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\City\City1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\City\City2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Kas\Kas1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Kas\Kas2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Salesman\Salesman1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Salesman\Salesman2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Store\Store2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Contact\Store\Store1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Menu\Menu3V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Menu\Menu2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Menu\Menu1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PanelV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\PIN\PINV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputText\InputText2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputText\InputText1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputText\InputText3V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Templates\Input\InputText\InputText4V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Themes\ThemeDark.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Themes\ThemeLight.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\ContentV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\ContentPMListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\Pay\ContentPayTransferListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\Pay\ContentPayBGListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\Pay\ContentPayCekListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\Pay\ContentPayCashListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\PM\Pay\ContentPayListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\TR\ContentPIListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\TR\ContentTRListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Product\ContentProductListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Product\ContentProductWarehouseListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Product\ContentProductCategoryListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Product\ContentProductBrandListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\QRIS\ContentQRISListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Bank\ContentBankListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\Kas\ContentKasListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Master\List\ContentListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\PayVariant\PageVariantEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\PagePMEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\PagePMV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\PM\PageFilterPMV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayTransfer\PagePayTransferEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayTransfer\PagePayTransferV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayCek\PagePayCekEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayCek\PagePayCekV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayCash\PagePayCashEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayBG\PagePayBGEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayCash\PagePayCashV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PayBG\PagePayBGV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PagePayEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PM\Pay\PagePayV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Pay\PageFilterPayTransferV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Pay\PageFilterPayBGV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Pay\PageFilterPayCekV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Pay\PageFilterPayCashV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Pay\PageFilterPayV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\Rate\PageRateEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PageTRDetailEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\HSum\PageHSumEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PI\PagePIDetailEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PI\PagePIEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PI\PagePIV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PageTREditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\TR\PageTRV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\TR\PageFilterPIV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\TR\PageFilterTRV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Product\PageFilterProductV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Product\PageFilterProductWarehouseV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Product\PageFilterProductBrandV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Product\PageFilterProductCategoryV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\PageProductEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\PageProductV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductWarehouse\PageProductWarehouseEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductBrand\PageProductBrandEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductWarehouse\PageProductWarehouseV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductBrand\PageProductBrandV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductCategory\PageProductCategoryEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\ProductCategory\PageProductCategoryV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Product\Variant\PageVariantEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\QRIS\PageQRISEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\QRIS\PageQRISV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\QRIS\PageFilterQRISV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Bank\PageFilterBankV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Bank\PageBankEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Kas\PageKasEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Bank\PageBankV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Kas\PageKasV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\Kas\PageFilterKasV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Filter\PageFilterV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Official\PageOfficialV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Login\PageStartupV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Scan\PageScanV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main2\Dashboard\PageDashboardV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main2\PIN\PagePINV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Wishlist\PageWishlistV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Trolly\PageTrollyV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Home\PageHomeV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Login\PageRegisterV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Login\PageLoginV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PageMasterEditVPageMasterEditV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PageMasterV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Progress\PageProgressV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\PageV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Page\Main1\Setup\PageSetupV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Panel\PanelList1V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Panel\PanelList3V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Panel\PanelList2V.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Panel\PanelGrupListVPanelGrupListV.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Templates\PM\Detail\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Central\Central.App-master\Central.Library\Central.Library.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+</Project>

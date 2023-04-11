@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:PageMasterEditV
+    x:Class="Central.App.Views.PageTREditV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+
+    <!--<view:PageMasterEditV.List>
+        <view:ContentProductListV/>
+    </view:PageMasterEditV.List>-->
+
+    <view:PageMasterEditV.EditFooter>
+        <temp:FrameV
+            Margin="0"
+            Padding="12"
+            BackgroundColor="{DynamicResource ClrPrimary}"
+            CornerRadius="5"
+            VerticalOptions="Center">
+
+            <Grid ColumnSpacing="10" RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--  Caption  -->
+                <temp:LabelNormalV
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    Text="Bayar"
+                    TextColor="White" />
+
+                <!--  Total  -->
+                <temp:LabelNormalV
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding TotalTransaksi, StringFormat='Rp. {0:#,##0},-'}"
+                    TextColor="White" />
+
+                <!--  Icon  -->
+                <temp:LabelIconV
+                    Grid.Column="2"
+                    Text="{Binding Icon2}"
+                    TextColor="White" />
+            </Grid>
+
+        </temp:FrameV>
+    </view:PageMasterEditV.EditFooter>
+</view:PageMasterEditV>

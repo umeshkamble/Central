@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:PageMasterEditV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:view="clr-namespace:Central.App.Views"
+                xmlns:temp="clr-namespace:Central.App.Templates"
+                x:Class="Central.App.Views.PagePMEditV">
+
+    <view:PageMasterEditV.Edit>
+        <temp:PMEditV/>
+    </view:PageMasterEditV.Edit>
+
+
+    <view:PageMasterEditV.EditFooter>
+        <temp:FrameV
+            Margin="0"
+            Padding="12"
+            CornerRadius="5"
+            VerticalOptions="Center"
+            BackgroundColor="{DynamicResource ClrPrimary}">
+
+            <Grid
+                RowSpacing="0"
+                ColumnSpacing="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Caption-->
+                <temp:LabelNormalV
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Subtitle"
+                    TextColor="White"
+                    Text="Bayar"/>
+
+                <!--Total-->
+                <temp:LabelNormalV
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="End"
+                    FontSize="Subtitle"
+                    TextColor="White"
+                    Text="{Binding Bayar, StringFormat='Rp. {0:#,##0},-'}"/>
+
+                <!--Icon-->
+                <temp:LabelIconV
+                    Grid.Column="2"
+                    TextColor="White"
+                    Text="{Binding Icon2}"/>
+            </Grid>
+
+        </temp:FrameV>
+    </view:PageMasterEditV.EditFooter>
+
+</view:PageMasterEditV>

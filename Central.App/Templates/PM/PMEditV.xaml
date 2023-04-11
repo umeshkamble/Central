@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:PMT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:temp="clr-namespace:Central.App.Templates"
+            xmlns:view="clr-namespace:Central.App.Views"
+            x:Class="Central.App.Templates.PMEditV">
+    
+    <temp:PMT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Info General-->
+            <Grid
+                Grid.Row="0"
+                RowSpacing="10"
+                ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Nama,NoReferensis-->
+                <VerticalStackLayout
+                    Grid.Row="0"    
+                    Spacing="0">
+                    <temp:LabelNormalV
+                        FontAttributes="Bold"
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnNama}"/>
+
+                    <temp:LabelNormalV
+                        TextColor="{Binding PnTextColor1}"
+                        Text="{Binding PnNoReferensis, StringFormat='No. Referensi : {0}'}"/>
+                </VerticalStackLayout>
+
+                <!--PayVariantList1VM-->
+                <view:PanelList1V
+                    Grid.Row="1"
+                    BindingContext="{Binding PnPayVariantList1VM}"/>
+
+                <!--PayVariantList2VM-->
+                <view:PanelList3V
+                    Grid.Row="2"
+                    BindingContext="{Binding PnPayVariantList2VM}"/>
+
+                <!--PSumV-->
+                <temp:PSumV
+                    Grid.Row="3"
+                    BindingContext="{Binding PnPSumVM}"/>
+            </Grid>
+        </Grid>
+
+
+    </temp:PMT.Body>
+</temp:PMT>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:TRDetailT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:temp="clr-namespace:Central.App.Templates"
+                xmlns:view="clr-namespace:Central.App.Views"
+                x:Class="Central.App.Templates.TRDetailEdit2V">
+
+    <temp:TRDetailT.Body>
+        <Grid 
+            RowSpacing="10" 
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--VariantGrupListVM-->
+            <view:PanelGrupListV
+                Grid.Row="0"
+                BindingContext="{Binding PnVariantGrupListVM}"/>
+            
+            <!--RateListVM-->
+            <view:PanelList2V
+                Grid.Row="1"
+                BindingContext="{Binding PnRateListVM}"/>
+
+            <!--ProductWarehouseListVM-->
+            <view:PanelList2V
+                Grid.Row="2"
+                BindingContext="{Binding PnProductWarehouseListVM}"/>
+
+            <!--Stok-->
+            <VerticalStackLayout
+                Grid.Row="3"
+                Spacing="0">
+                
+                <temp:LabelTitleV
+                    Text="Stok"/>
+
+                <HorizontalStackLayout
+                    Spacing="0">
+                    <temp:LabelNormalV
+                        Text="{Binding PnStok, FallbackValue='245', StringFormat='{0:#,##0.###}'}"/>
+
+                    <temp:LabelNormalV
+                        Text="{Binding PnUnit, FallbackValue=' Pcs', StringFormat=' {0}'}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!--Qty-->
+            <HorizontalStackLayout
+                Grid.Row="4"
+                Spacing="0"
+                HorizontalOptions="End">
+
+                <!--MenuMinVM-->
+                <temp:Menu3V
+                    VerticalOptions="Center"
+                    BindingContext="{Binding PnMenuMinVM}"/>
+
+                <!--Qty-->
+                <temp:InputText4V
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    WidthRequest="70"
+                    PnPadding="5,-3,5,-3"
+                    PnMargin="0"
+                    PnFontAttributes="Bold"
+                    BindingContext="{Binding PnInputQtyVM}"/>
+
+                <!--MenuMaxVM-->
+                <temp:Menu3V
+                    VerticalOptions="Center"
+                    BindingContext="{Binding PnMenuMaxVM}"/>
+            </HorizontalStackLayout>
+
+            <!--Note-->
+            <temp:InputText2V
+                Grid.Row="5"
+                BindingContext="{Binding PnInputNoteVM}"/>
+
+        </Grid>
+    </temp:TRDetailT.Body>
+
+
+</temp:TRDetailT>

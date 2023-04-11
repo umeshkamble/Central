@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:InputPickerT xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:temp="clr-namespace:Central.App.Templates"
+                   xmlns:behaviors="clr-namespace:Central.App.Behaviors"
+                   x:Class="Central.App.Templates.InputPickerV">
+    <temp:InputPickerT.Body>
+        <Grid 
+            RowSpacing="0" 
+            ColumnSpacing="0">
+        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Icon-->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Spacing="0"
+                VerticalOptions="Center"
+                IsVisible="{Binding PnViewIcon}">
+
+                <temp:LabelIconV
+                    Margin="0,0,0,5"
+                    WidthRequest="25"
+                    Text="{Binding PnIcon}"/>
+
+                <StackLayout 
+                    WidthRequest="10"/>
+            </HorizontalStackLayout>
+            
+            <!--TextHint1-->
+            <temp:LabelHintV
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnTextHint1, FallbackValue='Barang PPN ?'}"
+                IsVisible="{Binding PnViewTextHint1}"/>
+
+            <!--TextHint2-->
+            <temp:LabelHintV
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0,0,10"
+                FontSize="Micro"
+                TextColor="{Binding PnTextColor1}"
+                Text="{Binding PnTextHint2,FallbackValue='Deskripsi tambahan...'}"
+                IsVisible="{Binding PnViewTextHint2}"/>
+
+            <!--Text-->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                Spacing="10">
+
+                <temp:LabelNormalV
+                    FontAttributes="Bold"
+                    TextColor="{Binding PnTextColor2}"
+                    Text="{Binding PnText, FallbackValue='Yes'}"/>
+
+                <!--Icon2-->
+                <temp:LabelIconV
+                    Margin="0,0,0,5"
+                    Text="{Binding PnIcon2}"/>
+            </HorizontalStackLayout>
+
+            <!--Line-->
+            <temp:BoxViewV
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                IsVisible="{Binding PnViewLine}"/>
+        </Grid>
+    </temp:InputPickerT.Body>
+
+</temp:InputPickerT>

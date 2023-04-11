@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<temp:RateT  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:temp="clr-namespace:Central.App.Templates"
+             x:Class="Central.App.Templates.Rate4V">
+
+    <temp:RateT.Body>
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Harga Normal-->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Spacing="5">
+
+                <!--Harga Normal-->
+                <temp:LabelHintV                                       
+                    VerticalOptions="Center"
+                    TextDecorations="Strikethrough" 
+                    HorizontalTextAlignment="End"
+                    TextColor="{Binding PnTextColor1}"
+                    Text="{Binding PnHrgNormal, FallbackValue='25,000',StringFormat='{0:#,##0}'}"                                                                                
+                    IsVisible="{Binding PnViewDiskon}"/>
+
+                <!--TotalDiskon-->
+                <temp:FrameV
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    BackgroundColor="Red"
+                    Margin="0"
+                    Padding="2"
+                    CornerRadius="5"
+                    IsVisible="{Binding PnViewDiskon}">
+
+                    <temp:LabelHintV                                                                                                                                                
+                        TextColor="White"         
+                        Text="{Binding PnTotalDiskon, FallbackValue='-16%',StringFormat='-{0:#,##0.###}%'}"                                                    
+                        IsVisible="{Binding PnViewDiskon}"/>
+                </temp:FrameV>
+            </HorizontalStackLayout>
+
+            <!--Harga Publish-->
+            <HorizontalStackLayout
+                Grid.Row="1"
+                HorizontalOptions="End"
+                Spacing="0">
+                <temp:LabelHintV                                                                                                 
+                    TextColor="Red"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding PnHrgPublish, FallbackValue='Rp. 21,000',StringFormat='Rp. {0:#,##0}'}"/>
+                <temp:LabelHintV                                                                                                 
+                    TextColor="Red"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding PnUnit, FallbackValue=' / Pcs',StringFormat=' / {0}'}"/>
+            </HorizontalStackLayout>
+        </Grid>
+    </temp:RateT.Body>
+    
+    
+</temp:RateT>

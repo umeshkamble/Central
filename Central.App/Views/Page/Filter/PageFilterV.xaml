@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<view:PageV xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:view="clr-namespace:Central.App.Views"
+            xmlns:temp="clr-namespace:Central.App.Templates"
+            x:Class="Central.App.Views.PageFilterV">
+    <view:PageV.Body>
+        <Grid 
+            RowSpacing="0" 
+            ColumnSpacing="0"
+            Margin="0,10,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="0">
+                <Grid 
+                    RowSpacing="0"
+                    ColumnSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Sort-->
+                    <temp:LabelNormalV 
+                        Grid.Row="0"    
+                        FontAttributes="Bold"
+                        Text="Pengurutan : "/>
+
+                    <!--Space-->
+                    <StackLayout 
+                        Grid.Row="1"
+                        HeightRequest="5"/>
+
+                    <!--SortListGroup-->
+                    <view:PanelGrupListV
+                        Grid.Row="2"
+                        BindingContext="{Binding SortGrupListVM}"/>
+
+                    <!--Space-->
+                    <StackLayout 
+                        Grid.Row="3"
+                        HeightRequest="20"/>
+
+                    <!--Filter-->
+                    <temp:LabelNormalV 
+                        Grid.Row="4"
+                        FontAttributes="Bold"
+                        Text="Filter : "/>
+
+                    <!--Keyword-->
+                    <view:PanelList2V
+                        Grid.Row="5"
+                        BindingContext="{Binding KeywordListVM}"
+                        IsVisible="{Binding IsViewKeyword}"/>
+
+                    <!--Space-->
+                    <StackLayout
+                        Grid.Row="6"
+                        HeightRequest="7"   
+                        IsVisible="{Binding IsViewKeyword}"/>
+
+                    <!--Other Filter-->
+                    <ContentView 
+                        Grid.Row="7"    
+                        x:Name="BodyFilterContent"/>
+                </Grid>
+            </ScrollView>
+
+            <!--Execute-->
+            <temp:ButtonNormalV
+				Grid.Row="1"	
+                Text="Tampilkan"
+			    Command="{Binding ExecuteCommand}"/>
+        </Grid>
+    </view:PageV.Body>
+</view:PageV>

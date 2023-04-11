@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Central.App.Views.PageV"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:temp="clr-namespace:Central.App.Templates"
+    xmlns:view="clr-namespace:Central.App.Views">
+
+    <Grid
+        Margin="10,0,10,10"
+        ColumnSpacing="0"
+        RowSpacing="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            ColumnSpacing="10"
+            RowSpacing="0"
+            VerticalOptions="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  MenuListNav1  -->
+            <view:PanelList2V Grid.Column="0" BindingContext="{Binding MenuListNav1VM}" />
+
+            <!--  MenuListNav2  -->
+            <view:PanelList2V
+                Grid.Column="2"
+                BindingContext="{Binding MenuListNav2VM}"
+                HorizontalOptions="End" />
+        </Grid>
+
+        <!--  Title  -->
+        <VerticalStackLayout Grid.Row="1" Spacing="0">
+
+            <!--  Title1  -->
+            <temp:LabelTitleV Text="{Binding Title1}" VerticalOptions="Center" />
+
+            <!--  Title2  -->
+            <temp:LabelHintV Text="{Binding Title2}" VerticalOptions="Center" />
+        </VerticalStackLayout>
+
+
+        <!--  BodyContent  -->
+        <ContentView x:Name="ContentBody" Grid.Row="2" />
+
+
+        <!--  Progress  -->
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            HorizontalOptions="FillAndExpand"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="CenterAndExpand" />
+    </Grid>
+</ContentPage>
